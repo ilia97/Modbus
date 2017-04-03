@@ -1,1 +1,2 @@
 D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.exe.config

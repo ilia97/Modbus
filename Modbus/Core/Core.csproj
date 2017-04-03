@@ -30,7 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NModbus4, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NModbus4.2.1.0\lib\net40\NModbus4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,14 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\Interfaces\IRepository.cs" />
-    <Compile Include="DataAccess\ModbusOutputRepository.cs" />
+    <Compile Include="DataAccess\Interfaces\IModbusMasterInitializer.cs" />
+    <Compile Include="DataAccess\ModbusMasterInitializer.cs" />
     <Compile Include="Misc\Enums\PortType.cs" />
-    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\MasterSettingsIp.cs" />
+    <Compile Include="Models\MasterSettings.cs" />
+    <Compile Include="Models\SlaveSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IModbusService.cs" />
+    <Compile Include="Services\ModbusService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
