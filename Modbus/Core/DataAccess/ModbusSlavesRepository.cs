@@ -10,7 +10,7 @@ namespace Core.DataAccess
 {
     class ModbusSlavesRepository : IModbusSlavesRepository
     {
-        public void SaveData(Dictionary<int, object> registers)
+        public void SaveData(Dictionary<int, string> registers)
         {
             var fileName = $"{DateTime.Now:yyyy-MM-dd}.csv";
 

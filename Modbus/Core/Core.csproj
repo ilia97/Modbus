@@ -49,7 +49,9 @@
     <Compile Include="DataAccess\Interfaces\IModbusSlavesRepository.cs" />
     <Compile Include="DataAccess\ModbusMasterInitializer.cs" />
     <Compile Include="DataAccess\ModbusSlavesRepository.cs" />
+    <Compile Include="Misc\Enums\ModbusDataType.cs" />
     <Compile Include="Misc\Enums\PortType.cs" />
+    <Compile Include="Misc\Logger.cs" />
     <Compile Include="Models\MasterSettingsCom.cs" />
     <Compile Include="Models\MasterSettingsIp.cs" />
     <Compile Include="Models\MasterSettings.cs" />

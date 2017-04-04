@@ -55,12 +55,35 @@ namespace Core.DataAccess
                 var slaveDetails = fileLines[i].Split('=');
                 var slaveSettings = slaveDetails[1].Split(';');
 
+                var dataTypes = slaveSettings[2].Split(';');
+
                 slaves.Add(new SlaveSettings()
                 {
                     Id = Convert.ToInt32(slaveDetails[0]),
-                    StartAddress = Convert.ToInt32(slaveSettings[0]),
-                    NumberOfRegisters = Convert.ToInt32(slaveSettings[1]),
-                    Type = slaveSettings[2]
+                    StartAddress = Convert.ToUInt16(slaveSettings[0]),
+                    NumberOfRegisters = Convert.ToUInt16(slaveSettings[1]),
+                    Types = dataTypes.Select(x =>
+                    {
+                        switch (x)
+                        {
+                            case "String8_18":
+                                return ModbusDataType.String18;
+                            case "String8_20":
+                                return ModbusDataType.String20;
+                            case "UTC_Timestamp":
+                                return ModbusDataType.UtcTimestamp;
+                            case "SInt16":
+                                return ModbusDataType.SInt16;
+                            case "UInt16":
+                                return ModbusDataType.UInt16;
+                            case "SInt32":
+                                return ModbusDataType.SInt32;
+                            case "UInt32":
+                                return ModbusDataType.UInt32;
+                            default:
+                                throw new Exception();
+                        }
+                    }).ToList()
                 });
             }
 

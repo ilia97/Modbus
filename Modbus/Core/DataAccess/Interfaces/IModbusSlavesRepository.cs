@@ -8,6 +8,6 @@ namespace Core.DataAccess.Interfaces
 {
     public interface IModbusSlavesRepository
     {
-        void SaveData(Dictionary<int, object> registers);
+        void SaveData(Dictionary<int, string> registers);
     }
 }

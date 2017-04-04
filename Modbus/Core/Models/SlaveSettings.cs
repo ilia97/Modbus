@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Misc.Enums;
 
 namespace Core.Models
 {
@@ -14,6 +15,6 @@ namespace Core.Models
 
         public ushort NumberOfRegisters { set; get; }
 
-        public string Type { set; get; }
+        public List<ModbusDataType> Types { set; get; }
     }
 }

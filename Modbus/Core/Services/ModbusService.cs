@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using Core.DataAccess.Interfaces;
+using Core.Misc.Enums;
 using Core.Models;
 using Core.Services.Interfaces;
 using Modbus.Device;
@@ -28,6 +30,20 @@ namespace Core.Services
         {
             var masterSettings = _modbusMasterInitializer.GetMasterSettings();
 
+            if (masterSettings.Period > 0)
+            {
+                var timer = new Timer(masterSettings.Period);
+                timer.Elapsed += (sender, e) => GetDataFromSlaves(masterSettings);
+                timer.Start();
+            }
+            else
+            {
+                GetDataFromSlaves(masterSettings);
+            }
+        }
+
+        private void GetDataFromSlaves(MasterSettings masterSettings)
+        {
             ModbusIpMaster master = null;
 
             var masterSettingsIp = masterSettings as MasterSettingsIp;
@@ -35,44 +51,46 @@ namespace Core.Services
             {
                 TcpClient client = new TcpClient(masterSettingsIp.Host,
                     masterSettingsIp.Port);
-                master = ModbusIpMaster.CreateIp(client);
-            }
-            else
-            {
-                var masterSettingsCom = masterSettings as MasterSettingsIpmo
-                if (masterSettingsIp != null)
-                {
-                    TcpClient client = new TcpClient(masterSettingsIp.Host,
-                        masterSettingsIp.Port);
-                    master = ModbusIpMaster.CreateIp(client);
-                }
-                SerialPort port = new SerialPort("COM1");
+                client.ReceiveTimeout = masterSettings.Timeout;
 
-                // configure serial port
-                port.BaudRate = 9600;
-                port.DataBits = 8;
-                port.Parity = Parity.None;
-                port.StopBits = StopBits.One;
-                port.Open();
+                master = ModbusIpMaster.CreateIp(client);
             }
 
             if (master != null)
             {
+                var results = new Dictionary<int, string>();
+
                 foreach (var slave in masterSettings.SlaveSettings)
                 {
-                    bool[] inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
+                    var currentRegisterNumber = slave.StartAddress;
+
+                    foreach (var type in slave.Types)
+                    {
+                        bool[] inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
+
+                        byte[] strArr = new byte[inputs.Length / 8];
+
+                        for (int i = 0; i < inputs.Length / 8; i++)
+                        {
+                            for (int index = i * 8, m = 1; index < i * 8 + 8; index++, m *= 2)
+                            {
+                                strArr[i] += inputs[index] ? (byte) m : (byte) 0;
+                            }
+                        }
+
+                        switch (type)
+                        {
+                                case ModbusDataType.SInt16:
+                                break;
+                        }
+                        var result = new ASCIIEncoding().GetString(strArr);
+
+                        results.Add(slave.StartAddress, result);
+                    }
                 }
+
+                _modbusSlavesRepository.SaveData(results);
             }
-
-            // read five input values
-            ushort startAddress = 100;
-            ushort numInputs = 5;
-
-            
-
-            for (int i = 0; i < numInputs; i++)
-                Console.WriteLine("Input {0}={1}", startAddress + i, inputs[i] ? 1 : 0);
-
         }
     }
 }
