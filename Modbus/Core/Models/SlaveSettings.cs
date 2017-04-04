@@ -10,9 +10,9 @@ namespace Core.Models
     {
         public int Id { set; get; }
 
-        public int StartAddress { set; get; }
+        public ushort StartAddress { set; get; }
 
-        public int NumberOfRegisters { set; get; }
+        public ushort NumberOfRegisters { set; get; }
 
         public string Type { set; get; }
     }

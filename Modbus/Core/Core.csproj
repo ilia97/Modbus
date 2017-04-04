@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\Interfaces\IModbusMasterInitializer.cs" />
+    <Compile Include="DataAccess\Interfaces\IModbusSlavesRepository.cs" />
     <Compile Include="DataAccess\ModbusMasterInitializer.cs" />
+    <Compile Include="DataAccess\ModbusSlavesRepository.cs" />
     <Compile Include="Misc\Enums\PortType.cs" />
+    <Compile Include="Models\MasterSettingsCom.cs" />
     <Compile Include="Models\MasterSettingsIp.cs" />
     <Compile Include="Models\MasterSettings.cs" />
     <Compile Include="Models\SlaveSettings.cs" />

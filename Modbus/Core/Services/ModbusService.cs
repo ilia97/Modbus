@@ -14,30 +14,61 @@ namespace Core.Services
 {
     public class ModbusService : IModbusService
     {
-        private readonly IModbusMasterInitializer modbusMasterInitializer;
+        private readonly IModbusMasterInitializer _modbusMasterInitializer;
+        private readonly IModbusSlavesRepository _modbusSlavesRepository;
 
-        public ModbusService(IModbusMasterInitializer modbusMasterInitializer)
+        public ModbusService(IModbusMasterInitializer modbusMasterInitializer,
+            IModbusSlavesRepository modbusSlavesRepository)
         {
-            this.modbusMasterInitializer = modbusMasterInitializer;
+            this._modbusMasterInitializer = modbusMasterInitializer;
+            this._modbusSlavesRepository = modbusSlavesRepository;
         }
 
         public void GetDataFromSlaves()
         {
-            var masterSettings = modbusMasterInitializer.GetMasterSettings();
+            var masterSettings = _modbusMasterInitializer.GetMasterSettings();
 
             ModbusIpMaster master = null;
 
-            if (masterSettings is MasterSettingsIp)
+            var masterSettingsIp = masterSettings as MasterSettingsIp;
+            if (masterSettingsIp != null)
             {
-                TcpClient client = new TcpClient(((MasterSettingsIp) masterSettings).Host,
-                    ((MasterSettingsIp) masterSettings).Port);
+                TcpClient client = new TcpClient(masterSettingsIp.Host,
+                    masterSettingsIp.Port);
                 master = ModbusIpMaster.CreateIp(client);
+            }
+            else
+            {
+                var masterSettingsCom = masterSettings as MasterSettingsIpmo
+                if (masterSettingsIp != null)
+                {
+                    TcpClient client = new TcpClient(masterSettingsIp.Host,
+                        masterSettingsIp.Port);
+                    master = ModbusIpMaster.CreateIp(client);
+                }
+                SerialPort port = new SerialPort("COM1");
+
+                // configure serial port
+                port.BaudRate = 9600;
+                port.DataBits = 8;
+                port.Parity = Parity.None;
+                port.StopBits = StopBits.One;
+                port.Open();
+            }
+
+            if (master != null)
+            {
+                foreach (var slave in masterSettings.SlaveSettings)
+                {
+                    bool[] inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
+                }
             }
 
             // read five input values
             ushort startAddress = 100;
             ushort numInputs = 5;
-            bool[] inputs = master.ReadInputs(startAddress, numInputs);
+
+            
 
             for (int i = 0; i < numInputs; i++)
                 Console.WriteLine("Input {0}={1}", startAddress + i, inputs[i] ? 1 : 0);
