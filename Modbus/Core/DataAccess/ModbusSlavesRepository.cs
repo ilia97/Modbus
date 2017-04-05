@@ -8,7 +8,7 @@ using Core.DataAccess.Interfaces;
 
 namespace Core.DataAccess
 {
-    class ModbusSlavesRepository : IModbusSlavesRepository
+    public class ModbusSlavesRepository : IModbusSlavesRepository
     {
         public void SaveData(Dictionary<int, string> registers)
         {

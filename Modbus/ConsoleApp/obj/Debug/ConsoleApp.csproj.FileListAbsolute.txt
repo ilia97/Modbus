@@ -5,3 +5,7 @@ D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache
 D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.exe
 D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.dll
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.dll
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.xml

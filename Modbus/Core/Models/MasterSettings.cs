@@ -7,17 +7,19 @@ namespace Core.Models
     {
         public MasterSettings()
         {
-            this.SlaveSettings = new List<SlaveSettings>();
+            this.SlaveSettings = new List<GroupSettings>();
         }
 
         public bool IsLoggerEnabled { set; get; }
 
         public int Timeout { set; get; }
-         
+
+        public byte DeviceId { set; get; }
+
         public PortType PortType { set; get; }
 
         public int Period { set; get; }
 
-        public List<SlaveSettings> SlaveSettings { set; get; }
+        public List<GroupSettings> SlaveSettings { set; get; }
     }
 }

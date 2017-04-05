@@ -7,7 +7,7 @@ using Core.Misc.Enums;
 
 namespace Core.Models
 {
-    public class SlaveSettings
+    public class GroupSettings
     {
         public int Id { set; get; }
 

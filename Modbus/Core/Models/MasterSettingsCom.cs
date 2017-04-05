@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Core.Models
 {
-    class MasterSettingsCom : MasterSettings
+    public class MasterSettingsCom : MasterSettings
     {
+        public string PortName { set; get; }
+
         public int BaudRate { set; get; }
 
         public int DataBits { set; get; }
