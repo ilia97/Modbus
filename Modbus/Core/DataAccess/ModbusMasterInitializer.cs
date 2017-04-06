@@ -65,7 +65,7 @@ namespace Core.DataAccess
             }
 
             // На шестой строке после знака равно располагается идентификатор устройства.
-            var deviceId = Convert.ToInt32(fileLines[5].Split('=')[1]);
+            var deviceId = Convert.ToByte(fileLines[5].Split('=')[1]);
 
             // На седьмой строке после знака равно располагается интервал опроса контроллеров.
             var period = Convert.ToInt32(fileLines[6].Split('=')[1]);

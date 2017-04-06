@@ -45,6 +45,7 @@ namespace Core.Services
         private void GetDataFromSlaves(MasterSettings masterSettings)
         {
             var results = new Dictionary<int, string>();
+            bool[] inputs;
 
             var masterSettingsIp = masterSettings as MasterSettingsIp;
             if (masterSettingsIp != null)
@@ -56,85 +57,9 @@ namespace Core.Services
 
                 foreach (var slave in masterSettings.SlaveSettings)
                 {
-                    var inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
+                    inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
 
-                    foreach (var type in slave.Types)
-                    {
-                        switch (type)
-                        {
-                            case ModbusDataType.SInt16:
-                                var sInt16Part = inputs.Take(8 * 2).ToArray();
-                                inputs = inputs.Skip(8 * 2).ToArray();
-
-                                var shortArray = new short[1];
-                                new BitArray(sInt16Part).CopyTo(shortArray, 0);
-
-                                results.Add(slave.StartAddress, shortArray[0].ToString());
-                                break;
-                            case ModbusDataType.UInt16:
-                                var uInt16Part = inputs.Take(8 * 2).ToArray();
-                                inputs = inputs.Skip(8 * 2).ToArray();
-
-                                var uShortArray = new ushort[1];
-                                new BitArray(uInt16Part).CopyTo(uShortArray, 0);
-
-                                results.Add(slave.StartAddress, uShortArray[0].ToString());
-                                break;
-                            case ModbusDataType.SInt32:
-                                var sInt32Part = inputs.Take(8 * 4).ToArray();
-                                inputs = inputs.Skip(8 * 4).ToArray();
-
-                                var intArray = new int[1];
-                                new BitArray(sInt32Part).CopyTo(intArray, 0);
-
-                                results.Add(slave.StartAddress, intArray[0].ToString());
-                                break;
-                            case ModbusDataType.UInt32:
-                            case ModbusDataType.UtcTimestamp:
-                                var uInt32Part = inputs.Take(8 * 4).ToArray();
-                                inputs = inputs.Skip(8 * 4).ToArray();
-
-                                var uIntArray = new int[1];
-                                new BitArray(uInt32Part).CopyTo(uIntArray, 0);
-
-                                results.Add(slave.StartAddress, uIntArray[0].ToString());
-                                break;
-                            case ModbusDataType.String18:
-                                bool[] string18Part;
-
-                                if (inputs.Length > 8 * 18)
-                                {
-                                    string18Part = inputs.Take(8 * 18).ToArray();
-                                    inputs = inputs.Skip(8 * 18).ToArray();
-                                }
-                                else
-                                {
-                                    string18Part = inputs;
-                                    inputs = new bool[0];
-                                }
-
-                                results.Add(slave.StartAddress, string18Part.ConvertToString());
-                                break;
-                            case ModbusDataType.String20:
-                                bool[] string20Part;
-
-                                if (inputs.Length > 8 * 20)
-                                {
-                                    string20Part = inputs.Take(8 * 20).ToArray();
-                                    inputs = inputs.Skip(8 * 20).ToArray();
-                                }
-                                else
-                                {
-                                    string20Part = inputs;
-                                    inputs = new bool[0];
-                                }
-
-                                results.Add(slave.StartAddress, string20Part.ConvertToString());
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                    }
+                    AddBitsToResult(results, inputs, slave);
                 }
             }
             else
@@ -162,11 +87,96 @@ namespace Core.Services
                     {
                         var registers = master.ReadHoldingRegisters(masterSettingsCom.DeviceId, slave.StartAddress,
                             slave.NumberOfRegisters);
+
+                        inputs = registers.ConvertToBitArray();
+
+                        AddBitsToResult(results, inputs, slave);
                     }
                 }
             }
 
             _modbusSlavesRepository.SaveData(results);
+        }
+
+        private static void AddBitsToResult(IDictionary<int, string> results, bool[] inputs, GroupSettings slave)
+        {
+            foreach (var type in slave.Types)
+            {
+                switch (type)
+                {
+                    case ModbusDataType.SInt16:
+                        var sInt16Part = inputs.Take(8 * 2).ToArray();
+                        inputs = inputs.Skip(8 * 2).ToArray();
+
+                        var shortArray = new short[1];
+                        new BitArray(sInt16Part).CopyTo(shortArray, 0);
+
+                        results.Add(slave.StartAddress, shortArray[0].ToString());
+                        break;
+                    case ModbusDataType.UInt16:
+                        var uInt16Part = inputs.Take(8 * 2).ToArray();
+                        inputs = inputs.Skip(8 * 2).ToArray();
+
+                        var uShortArray = new ushort[1];
+                        new BitArray(uInt16Part).CopyTo(uShortArray, 0);
+
+                        results.Add(slave.StartAddress, uShortArray[0].ToString());
+                        break;
+                    case ModbusDataType.SInt32:
+                        var sInt32Part = inputs.Take(8 * 4).ToArray();
+                        inputs = inputs.Skip(8 * 4).ToArray();
+
+                        var intArray = new int[1];
+                        new BitArray(sInt32Part).CopyTo(intArray, 0);
+
+                        results.Add(slave.StartAddress, intArray[0].ToString());
+                        break;
+                    case ModbusDataType.UInt32:
+                    case ModbusDataType.UtcTimestamp:
+                        var uInt32Part = inputs.Take(8 * 4).ToArray();
+                        inputs = inputs.Skip(8 * 4).ToArray();
+
+                        var uIntArray = new int[1];
+                        new BitArray(uInt32Part).CopyTo(uIntArray, 0);
+
+                        results.Add(slave.StartAddress, uIntArray[0].ToString());
+                        break;
+                    case ModbusDataType.String18:
+                        bool[] string18Part;
+
+                        if (inputs.Length > 8 * 18)
+                        {
+                            string18Part = inputs.Take(8 * 18).ToArray();
+                            inputs = inputs.Skip(8 * 18).ToArray();
+                        }
+                        else
+                        {
+                            string18Part = inputs;
+                            inputs = new bool[0];
+                        }
+
+                        results.Add(slave.StartAddress, string18Part.ConvertToString());
+                        break;
+                    case ModbusDataType.String20:
+                        bool[] string20Part;
+
+                        if (inputs.Length > 8 * 20)
+                        {
+                            string20Part = inputs.Take(8 * 20).ToArray();
+                            inputs = inputs.Skip(8 * 20).ToArray();
+                        }
+                        else
+                        {
+                            string20Part = inputs;
+                            inputs = new bool[0];
+                        }
+
+                        results.Add(slave.StartAddress, string20Part.ConvertToString());
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
         }
     }
 }

@@ -9,3 +9,5 @@ D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.xml
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.dll
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.xml

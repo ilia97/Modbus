@@ -22,5 +22,21 @@ namespace Core.Misc
 
             return new ASCIIEncoding().GetString(strArr);
         }
+
+        public static bool[] ConvertToBitArray(this ushort[] registersArray)
+        {
+            var result = new List<bool>();
+
+            for (var i = 0; i < registersArray.Length; i++)
+            {
+                var register = registersArray[i];
+                while (register > 0)
+                {
+                    result.Add(register % 2 == 1);
+                    register >>= 1;
+                }
+            }
+            return result.ToArray();
+        }
     }
 }
