@@ -1,0 +1,6 @@
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\ServiceApp.exe.config
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\ServiceApp.exe
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\ServiceApp.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.csprojResolveAssemblyReference.cache
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.exe
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.pdb

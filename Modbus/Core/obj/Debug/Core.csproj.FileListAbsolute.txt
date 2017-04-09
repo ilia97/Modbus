@@ -1,0 +1,9 @@
+D:\Projects\Modbus\Modbus\Core\bin\Debug\Core.dll
+D:\Projects\Modbus\Modbus\Core\bin\Debug\Core.pdb
+D:\Projects\Modbus\Modbus\Core\bin\Debug\NModbus4.dll
+D:\Projects\Modbus\Modbus\Core\bin\Debug\NModbus4.xml
+D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.dll
+D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.pdb
+D:\Projects\Modbus\Modbus\Core\bin\Debug\Autofac.dll
+D:\Projects\Modbus\Modbus\Core\bin\Debug\Autofac.xml
