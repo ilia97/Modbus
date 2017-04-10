@@ -12,8 +12,11 @@ namespace Core.Misc
     {
         public static void WriteError(string error)
         {
+            // Берём имя файла логирования из настроек приложения.
             var logFileName = ConfigurationManager.AppSettings["LogFileName"];
-            File.AppendAllText(logFileName, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss};{error}\r\n");
+
+
+            File.AppendAllText(logFileName, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
         }
     }
 }

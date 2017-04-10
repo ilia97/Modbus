@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Core.Misc
 {
+    /// <summary>
+    /// Класс, в котором хранятся все дополнительные методы для преобразования типов.
+    /// </summary>
     public static class Converter
     {
         public static string ConvertToString(this bool[] bitsArray)
@@ -30,13 +34,37 @@ namespace Core.Misc
             for (var i = 0; i < registersArray.Length; i++)
             {
                 var register = registersArray[i];
-                while (register > 0)
+
+                for (var k = 15; k >= 0; k--)
                 {
-                    result.Add(register % 2 == 1);
-                    register >>= 1;
+                    if (register >= Math.Pow(2, k))
+                    {
+                        result.Add(true);
+                        register -= (ushort)Math.Pow(2, k);
+                    }
+                    else
+                    {
+                        result.Add(false);
+                    }
                 }
             }
+
             return result.ToArray();
+        }
+
+        public static uint ConvertToUInt(this bool[] array)
+        {
+            uint res = 0;
+
+            for (int i = 0; i != 32; i++)
+            {
+                if (array[32 - i - 1])
+                {
+                    res |= (uint)(1 << i);
+                }
+            }
+
+            return res;
         }
     }
 }
