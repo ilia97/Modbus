@@ -18,7 +18,7 @@ namespace Core.Misc
 
             for (int i = 0; i < bitsArray.Length / 8; i++)
             {
-                for (int index = i * 8, m = 1; index < i * 8 + 8; index++, m *= 2)
+                for (int index = i * 8 + 7, m = 1; index >= i * 8; index--, m *= 2)
                 {
                     strArr[i] += bitsArray[index] ? (byte)m : (byte)0;
                 }
