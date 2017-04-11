@@ -11,3 +11,14 @@ D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.xml
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.xml
+D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.exe
+D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.pdb
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.exe
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.pdb
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.dll
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\Core.dll
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.dll
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\Core.pdb
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\Autofac.xml
+D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.xml
+D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache

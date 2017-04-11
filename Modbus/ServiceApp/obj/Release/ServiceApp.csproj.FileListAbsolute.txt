@@ -1,0 +1,12 @@
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\ServiceApp.exe.config
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\ServiceApp.exe
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\ServiceApp.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.xml
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.xml
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.csprojResolveAssemblyReference.cache
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.exe
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.pdb

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using Core.Misc.Enums;
 using Core.Models;
@@ -131,7 +132,7 @@ namespace Core.DataAccess
                 case PortType.IP:
                     var ipAddress = fileLines[4].Split('=')[1];
 
-                    return new MasterSettingsIp()
+                    return new MasterSettingsIp
                     {
                         Host = ipAddress.Split(':')[0],
                         IsLoggerEnabled = isLoggerEnabled,
@@ -143,8 +144,63 @@ namespace Core.DataAccess
                         Timeout = timeout
                     };
                 case PortType.COM:
+                    var comSettings = fileLines[4].Split('=')[1].Split(';');
 
-                    break;
+                    var portName = comSettings[0];
+                    var baudRate = Convert.ToInt32(comSettings[1]);
+                    var dataBits = Convert.ToInt32(comSettings[2][0].ToString());
+
+                    var parity = Parity.Even;
+                    switch (comSettings[2][1])
+                    {
+                        case 'N':
+                            parity = Parity.None;
+                            break;
+                        case 'E':
+                            parity = Parity.Even;
+                            break;
+                        case 'M':
+                            parity = Parity.Mark;
+                            break;
+                        case 'O':
+                            parity = Parity.Odd;
+                            break;
+                        case 'S':
+                            parity = Parity.Space;
+                            break;
+                    }
+
+                    var stopBits = StopBits.None;
+                    switch (comSettings[2].Substring(2))
+                    {
+                        case "0":
+                            stopBits = StopBits.None;
+                            break;
+                        case "1":
+                            stopBits = StopBits.One;
+                            break;
+                        case "1.5":
+                            stopBits = StopBits.OnePointFive;
+                            break;
+                        case "2":
+                            stopBits = StopBits.Two;
+                            break;
+                    }
+
+                    return new MasterSettingsCom
+                    {
+                        PortName = portName,
+                        BaudRate = baudRate,
+                        DataBits = dataBits,
+                        StopBits = stopBits,
+                        Parity = parity,
+                        IsLoggerEnabled = isLoggerEnabled,
+                        Period = period,
+                        DeviceId = deviceId,
+                        PortType = portType,
+                        SlaveSettings = groups,
+                        Timeout = timeout
+                    };
             }
 
             return null;

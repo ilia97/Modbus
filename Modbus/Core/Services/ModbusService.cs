@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Net.Sockets;
 using System.Timers;
@@ -10,13 +10,20 @@ using Core.Misc.Enums;
 using Core.Models;
 using Core.Services.Interfaces;
 using Modbus.Device;
-using System.IO.Ports;
+using Modbus;
 
 namespace Core.Services
 {
     public class ModbusService : IModbusService
     {
+        /// <summary>
+        /// Инициализатор настроек приложения.
+        /// </summary>
         private readonly IModbusMasterInitializer _modbusMasterInitializer;
+
+        /// <summary>
+        /// Репозиторий для хранения данных ведомых устройств. 
+        /// </summary>
         private readonly IModbusSlavesRepository _modbusSlavesRepository;
 
         public ModbusService(IModbusMasterInitializer modbusMasterInitializer,
@@ -26,41 +33,50 @@ namespace Core.Services
             _modbusSlavesRepository = modbusSlavesRepository;
         }
 
+        /// <summary>
+        /// Метод, используемый для опроса ведомых устройств. Настройки инициализации берутся из файла настроек.
+        /// </summary>
         public void GetDataFromSlaves()
         {
+            // Получаем данные из репозитория
             var masterSettings = _modbusMasterInitializer.GetMasterSettings();
 
             if (masterSettings.Period > 0)
             {
-                var timer = new Timer(masterSettings.Period);
+                // Если интервал запуска не равен нулю, то запускаем опрос ведомых устройств с этим интервалом (1с = 1000мс).
+                var timer = new Timer(masterSettings.Period * 1000);
                 timer.Elapsed += (sender, e) => GetDataFromSlaves(masterSettings);
+
+                // Так как таймер запускает функцию только по окончанию периода времени, то вначале запускаем фунцию, а потом сам таймер.
+                GetDataFromSlaves(masterSettings);
                 timer.Start();
             }
             else
             {
+                // Если интервал запуска равен нулю, то запускаем опрос ведомых устройств один раз.
                 GetDataFromSlaves(masterSettings);
             }
         }
 
+        /// <summary>
+        /// Метод, используемый для опроса ведомых устройств на основе настроек инициализации.
+        /// </summary>
+        /// <param name="masterSettings">Объект, содержащий настройки инициализации</param>
         private void GetDataFromSlaves(MasterSettings masterSettings)
         {
+            ModbusMaster master;
             var results = new Dictionary<int, string>();
-            bool[] inputs;
 
             var masterSettingsIp = masterSettings as MasterSettingsIp;
             if (masterSettingsIp != null)
             {
                 var client = new TcpClient(masterSettingsIp.Host,
-                    masterSettingsIp.Port) {ReceiveTimeout = masterSettings.Timeout};
+                    masterSettingsIp.Port)
+                { ReceiveTimeout = masterSettings.Timeout };
 
-                var master = ModbusIpMaster.CreateIp(client);
+                master = ModbusIpMaster.CreateIp(client);
 
-                foreach (var slave in masterSettings.SlaveSettings)
-                {
-                    inputs = master.ReadInputs(slave.StartAddress, slave.NumberOfRegisters);
-
-                    AddBitsToResult(results, inputs, slave);
-                }
+                results = GetDataFromConnection(master, masterSettings);
             }
             else
             {
@@ -79,104 +95,197 @@ namespace Core.Services
                     // configure serial port
                     port.Open();
 
-                    var master = ModbusSerialMaster.CreateRtu(port);
+                    master = ModbusSerialMaster.CreateRtu(port);
 
-                    if (master == null) return;
+                    results = GetDataFromConnection(master, masterSettings);
 
-                    foreach (var slave in masterSettings.SlaveSettings)
-                    {
-                        var registers = master.ReadHoldingRegisters(masterSettingsCom.DeviceId, slave.StartAddress,
-                            slave.NumberOfRegisters);
-
-                        inputs = registers.ConvertToBitArray();
-
-                        AddBitsToResult(results, inputs, slave);
-                    }
+                    port.Close();
                 }
             }
 
             _modbusSlavesRepository.SaveData(results);
         }
 
-        private static void AddBitsToResult(IDictionary<int, string> results, bool[] inputs, GroupSettings slave)
+        private static Dictionary<int, string> GetDataFromConnection(ModbusMaster master, MasterSettings masterSettings)
         {
-            foreach (var type in slave.Types)
+            if (master == null) return null;
+
+            var results = new Dictionary<int, string>();
+
+            foreach (var slave in masterSettings.SlaveSettings)
             {
-                switch (type)
+                try
                 {
-                    case ModbusDataType.SInt16:
-                        var sInt16Part = inputs.Take(8 * 2).ToArray();
-                        inputs = inputs.Skip(8 * 2).ToArray();
+                    var registers = master.ReadHoldingRegisters(masterSettings.DeviceId, slave.StartAddress,
+                        slave.NumberOfRegisters);
 
-                        var shortArray = new short[1];
-                        new BitArray(sInt16Part).CopyTo(shortArray, 0);
+                    var inputs = registers.ConvertToBitArray();
 
-                        results.Add(slave.StartAddress, shortArray[0].ToString());
-                        break;
-                    case ModbusDataType.UInt16:
-                        var uInt16Part = inputs.Take(8 * 2).ToArray();
-                        inputs = inputs.Skip(8 * 2).ToArray();
+                    var startAddress = slave.StartAddress;
 
-                        var uShortArray = new ushort[1];
-                        new BitArray(uInt16Part).CopyTo(uShortArray, 0);
-
-                        results.Add(slave.StartAddress, uShortArray[0].ToString());
-                        break;
-                    case ModbusDataType.SInt32:
-                        var sInt32Part = inputs.Take(8 * 4).ToArray();
-                        inputs = inputs.Skip(8 * 4).ToArray();
-
-                        var intArray = new int[1];
-                        new BitArray(sInt32Part).CopyTo(intArray, 0);
-
-                        results.Add(slave.StartAddress, intArray[0].ToString());
-                        break;
-                    case ModbusDataType.UInt32:
-                    case ModbusDataType.UtcTimestamp:
-                        var uInt32Part = inputs.Take(8 * 4).ToArray();
-                        inputs = inputs.Skip(8 * 4).ToArray();
-
-                        var uIntArray = new int[1];
-                        new BitArray(uInt32Part).CopyTo(uIntArray, 0);
-
-                        results.Add(slave.StartAddress, uIntArray[0].ToString());
-                        break;
-                    case ModbusDataType.String18:
-                        bool[] string18Part;
-
-                        if (inputs.Length > 8 * 18)
+                    foreach (var type in slave.Types)
+                    {
+                        switch (type)
                         {
-                            string18Part = inputs.Take(8 * 18).ToArray();
-                            inputs = inputs.Skip(8 * 18).ToArray();
-                        }
-                        else
-                        {
-                            string18Part = inputs;
-                            inputs = new bool[0];
-                        }
+                            case ModbusDataType.SInt16:
+                                // Берём из массива битов первые 16, чтобы сконвертировать их в знаковое 16-битное целое число.
+                                var sInt16Part = inputs.Take(8 * 2).ToArray();
 
-                        results.Add(slave.StartAddress, string18Part.ConvertToString());
-                        break;
-                    case ModbusDataType.String20:
-                        bool[] string20Part;
+                                // Обрезаем у массива эти первые 16 бит (16 бит = 2 байта).
+                                inputs = inputs.Skip(8 * 2).ToArray();
 
-                        if (inputs.Length > 8 * 20)
-                        {
-                            string20Part = inputs.Take(8 * 20).ToArray();
-                            inputs = inputs.Skip(8 * 20).ToArray();
-                        }
-                        else
-                        {
-                            string20Part = inputs;
-                            inputs = new bool[0];
-                        }
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var sInt16BinaryString = sInt16Part.Select(x => x ? 1 : 0);
 
-                        results.Add(slave.StartAddress, string20Part.ConvertToString());
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                                // Конвертируем полученное двоичное число в знаковое 16-битное целое число.
+                                var sInt16 = Convert.ToInt16(string.Join("", sInt16BinaryString), 2);
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress, sInt16.ToString());
+
+                                // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
+                                startAddress += 1;
+
+                                break;
+                            case ModbusDataType.UInt16:
+                                // Берём из массива битов первые 16, чтобы сконвертировать их в беззнаковое 16-битное целое число.
+                                var uInt16Part = inputs.Take(8 * 2).ToArray();
+
+                                // Обрезаем у массива эти первые 16 бит (16 бит = 2 байта).
+                                inputs = inputs.Skip(8 * 2).ToArray();
+
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var binaryString = uInt16Part.Select(x => x ? 1 : 0);
+
+                                // Конвертируем полученное двоичное число в беззнаковое 16-битное целое число.
+                                var uShort = Convert.ToUInt16(string.Join("", binaryString), 2);
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress, uShort.ToString());
+
+                                // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
+                                startAddress += 1;
+
+                                break;
+                            case ModbusDataType.SInt32:
+                                // Берём из массива битов первые 32, чтобы сконвертировать их в знаковое 32-битное целое число.
+                                var sInt32Part = inputs.Take(8 * 4).ToArray();
+
+                                // Обрезаем у массива эти первые 32 бит (32 бит = 4 байта).
+                                inputs = inputs.Skip(8 * 4).ToArray();
+
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var sInt32BinaryString = sInt32Part.Select(x => x ? 1 : 0);
+
+                                // Конвертируем полученное двоичное число в знаковое 32-битное целое число.
+                                var sInt32 = Convert.ToInt32(string.Join("", sInt32BinaryString), 2);
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress, sInt32.ToString());
+
+                                // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
+                                startAddress += 2;
+
+                                break;
+                            case ModbusDataType.UInt32:
+                                // Берём из массива битов первые 32, чтобы сконвертировать их в беззнаковое 32-битное целое число.
+                                var uInt32Part = inputs.Take(8 * 4).ToArray();
+
+                                // Обрезаем у массива эти первые 32 бит (32 бит = 4 байта).
+                                inputs = inputs.Skip(8 * 4).ToArray();
+
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var binaryUInt32String = uInt32Part.Select(x => x ? 1 : 0);
+
+                                // Конвертируем полученное двоичное число в беззнаковое 32-битное целое число.
+                                var uInt32 = Convert.ToUInt32(string.Join("", binaryUInt32String), 2);
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress, uInt32.ToString());
+
+                                // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
+                                startAddress += 2;
+
+                                break;
+                            case ModbusDataType.UtcTimestamp:
+                                // В данном случае мы должны считать целое число (тоже беззнаковое 32-битное) и преобразовать к дате.
+                                // Берём из массива битов первые 32, чтобы сконвертировать их в знаковое 32-битное целое число.
+                                var utcTimestampPart = inputs.Take(8 * 4).ToArray();
+                                inputs = inputs.Skip(8 * 4).ToArray();
+
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var binaryUtcTimestampString = utcTimestampPart.Select(x => x ? 1 : 0);
+
+                                // Конвертируем полученное двоичное число в беззнаковое 32-битное целое число.
+                                var utcTimestamp = Convert.ToUInt32(string.Join("", binaryUtcTimestampString), 2);
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress,
+                                    new DateTime(1970, 1, 1).AddSeconds(utcTimestamp).ToString("yyyy.MM.dd HH:mm:ss"));
+
+                                // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
+                                startAddress += 2;
+
+                                break;
+                            case ModbusDataType.String18:
+                                bool[] string18Part;
+
+                                if (inputs.Length > 8 * 18)
+                                {
+                                    string18Part = inputs.Take(8 * 18).ToArray();
+                                    inputs = inputs.Skip(8 * 18).ToArray();
+
+                                    results.Add(startAddress, string18Part.ConvertToString());
+
+                                    startAddress += 9;
+                                }
+                                else
+                                {
+                                    string18Part = inputs;
+                                    inputs = new bool[0];
+
+                                    results.Add(startAddress, string18Part.ConvertToString());
+
+                                    startAddress += (ushort)(string18Part.Length / 16);
+                                }
+                                break;
+                            case ModbusDataType.String20:
+                                bool[] string20Part;
+
+                                if (inputs.Length > 8 * 20)
+                                {
+                                    string20Part = inputs.Take(8 * 20).ToArray();
+                                    inputs = inputs.Skip(8 * 20).ToArray();
+
+                                    results.Add(startAddress, string20Part.ConvertToString());
+
+                                    startAddress += 10;
+                                }
+                                else
+                                {
+                                    string20Part = inputs;
+                                    inputs = new bool[0];
+
+                                    results.Add(startAddress, string20Part.ConvertToString());
+
+                                    startAddress += (ushort)(string20Part.Length / 16);
+                                }
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                    }
+                }
+                catch (SlaveException slaveException)
+                {
+                    if (masterSettings.IsLoggerEnabled)
+                    {
+                        Logger.WriteError(slaveException.Message);
+                    }
                 }
             }
+
+            return results;
         }
     }
 }

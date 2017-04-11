@@ -20,6 +20,8 @@ namespace ConsoleApp
             {
                 scope.Resolve<IModbusService>().GetDataFromSlaves();
             }
+
+            Console.ReadLine();
         }
     }
 }
