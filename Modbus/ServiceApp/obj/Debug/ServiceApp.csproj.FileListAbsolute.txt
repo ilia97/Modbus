@@ -4,3 +4,5 @@ D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\ServiceApp.pdb
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.csprojResolveAssemblyReference.cache
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.exe
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\Autofac.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\Autofac.xml
