@@ -16,53 +16,19 @@ namespace Core.Services
 {
     public class ModbusService : IModbusService
     {
-        /// <summary>
-        /// Инициализатор настроек приложения.
-        /// </summary>
-        private readonly IModbusMasterInitializer _modbusMasterInitializer;
-
-        /// <summary>
-        /// Репозиторий для хранения данных ведомых устройств. 
-        /// </summary>
         private readonly IModbusSlavesRepository _modbusSlavesRepository;
 
         public ModbusService(IModbusMasterInitializer modbusMasterInitializer,
             IModbusSlavesRepository modbusSlavesRepository)
         {
-            _modbusMasterInitializer = modbusMasterInitializer;
             _modbusSlavesRepository = modbusSlavesRepository;
-        }
-
-        /// <summary>
-        /// Метод, используемый для опроса ведомых устройств. Настройки инициализации берутся из файла настроек.
-        /// </summary>
-        public void GetDataFromSlaves()
-        {
-            // Получаем данные из репозитория
-            var masterSettings = _modbusMasterInitializer.GetMasterSettings();
-
-            if (masterSettings.Period > 0)
-            {
-                // Если интервал запуска не равен нулю, то запускаем опрос ведомых устройств с этим интервалом (1с = 1000мс).
-                var timer = new Timer(masterSettings.Period * 1000);
-                timer.Elapsed += (sender, e) => GetDataFromSlaves(masterSettings);
-
-                // Так как таймер запускает функцию только по окончанию периода времени, то вначале запускаем фунцию, а потом сам таймер.
-                GetDataFromSlaves(masterSettings);
-                timer.Start();
-            }
-            else
-            {
-                // Если интервал запуска равен нулю, то запускаем опрос ведомых устройств один раз.
-                GetDataFromSlaves(masterSettings);
-            }
         }
 
         /// <summary>
         /// Метод, используемый для опроса ведомых устройств на основе настроек инициализации.
         /// </summary>
         /// <param name="masterSettings">Объект, содержащий настройки инициализации</param>
-        private void GetDataFromSlaves(MasterSettings masterSettings)
+        public void GetDataFromSlaves(MasterSettings masterSettings)
         {
             ModbusMaster master;
             var results = new Dictionary<int, string>();

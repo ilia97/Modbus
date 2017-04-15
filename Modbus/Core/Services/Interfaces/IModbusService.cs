@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Core.Models;
 
 namespace Core.Services.Interfaces
 {
     public interface IModbusService
     {
-        void GetDataFromSlaves();
+        void GetDataFromSlaves(MasterSettings masterSettings);
     }
 }
