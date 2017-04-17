@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
 using System.Net.Sockets;
-using System.Timers;
 using Core.DataAccess.Interfaces;
 using Core.Misc;
 using Core.Misc.Enums;
@@ -18,8 +17,7 @@ namespace Core.Services
     {
         private readonly IModbusSlavesRepository _modbusSlavesRepository;
 
-        public ModbusService(IModbusMasterInitializer modbusMasterInitializer,
-            IModbusSlavesRepository modbusSlavesRepository)
+        public ModbusService(IModbusSlavesRepository modbusSlavesRepository)
         {
             _modbusSlavesRepository = modbusSlavesRepository;
         }
@@ -36,6 +34,7 @@ namespace Core.Services
             var masterSettingsIp = masterSettings as MasterSettingsIp;
             if (masterSettingsIp != null)
             {
+                // Если используется IP адресс, то используем TCP клиент для установления соединения.
                 var client = new TcpClient(masterSettingsIp.Host,
                     masterSettingsIp.Port)
                 { ReceiveTimeout = masterSettings.Timeout };
@@ -49,6 +48,7 @@ namespace Core.Services
                 var masterSettingsCom = masterSettings as MasterSettingsCom;
                 if (masterSettingsCom != null)
                 {
+                    // Случай, если используется СОМ соединение.
                     var port = new SerialPort(masterSettingsCom.PortName)
                     {
                         BaudRate = masterSettingsCom.BaudRate,
@@ -57,8 +57,7 @@ namespace Core.Services
                         StopBits = masterSettingsCom.StopBits,
                         ReadTimeout = masterSettingsCom.Timeout
                     };
-
-                    // configure serial port
+                    
                     port.Open();
 
                     master = ModbusSerialMaster.CreateRtu(port);

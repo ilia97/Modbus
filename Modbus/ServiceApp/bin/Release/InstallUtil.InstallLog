@@ -12,3 +12,92 @@ The file is located at D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\ServiceA
 The Commit phase completed successfully.
 
 The transacted install has completed.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+На этапе установки возникло исключение.
+System.ComponentModel.Win32Exception: Имя учетной записи задано неверно или не существует, или же неверен указанный пароль
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+На этапе установки возникло исключение.
+System.ComponentModel.Win32Exception: Сопоставление между именами пользователей и идентификаторами безопасности не было произведено
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+На этапе установки возникло исключение.
+System.ComponentModel.Win32Exception: Имя учетной записи задано неверно или не существует, или же неверен указанный пароль
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+На этапе установки возникло исключение.
+System.ComponentModel.Win32Exception: Сопоставление между именами пользователей и идентификаторами безопасности не было произведено
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап установки успешно выполнен, начинается этап фиксации.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Этап фиксации выполнен успешно.
+
+Групповая операция установки выполнена.
+
+
+Начинается установка.
+См. файл журнала выполнения операция для сборки D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.
+Данный файл находится в D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog.
+
+Удаление из системы выполнено.

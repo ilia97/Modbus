@@ -1,0 +1,67 @@
+﻿Выполняется установка сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Устанавливается служба 3MBP...
+Создается исходный EventLog 3MBP в журнале Application...
+Выполняется откат для сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Восстанавливается исходное состояние журнала событий для источника 3MBP.
+Выполняется установка сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется откат для сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется установка сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Устанавливается служба 3MBP...
+Создается исходный EventLog 3MBP в журнале Application...
+Выполняется откат для сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Восстанавливается исходное состояние журнала событий для источника 3MBP.
+Выполняется установка сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется откат для сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется установка сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Устанавливается служба 3MBP...
+Служба 3MBP успешно установлена.
+Создается исходный EventLog 3MBP в журнале Application...
+Выполняется фиксация сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется удаление сборки 'D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.InstallLog
+   assemblypath = D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
+Выполняется удаление источника EventLog 3MBP.
+Выполняется удаление службы 3MBP из системы...
+Служба 3MBP успешно удалена из системы.

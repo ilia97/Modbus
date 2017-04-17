@@ -10,3 +10,15 @@ D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\Core.dll
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\NModbus4.dll
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\Core.pdb
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\NModbus4.xml
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe.config
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.pdb
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Autofac.dll
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Core.dll
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\NModbus4.dll
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Core.pdb
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Autofac.xml
+D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\NModbus4.xml
+D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.csprojResolveAssemblyReference.cache
+D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\3MBP.exe
+D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\3MBP.pdb

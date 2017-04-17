@@ -5,9 +5,9 @@ namespace Core.Models
 {
     public class MasterSettings
     {
-        public MasterSettings()
+        protected MasterSettings()
         {
-            this.SlaveSettings = new List<GroupSettings>();
+            SlaveSettings = new List<GroupSettings>();
         }
 
         /// <summary>
@@ -24,11 +24,6 @@ namespace Core.Models
         /// Номер устройства.
         /// </summary>
         public byte DeviceId { set; get; }
-
-        /// <summary>
-        /// Тип соединения.
-        /// </summary>
-        public PortType PortType { set; get; }
 
         /// <summary>
         /// Интервал в секундах опроса ведомых устройств.

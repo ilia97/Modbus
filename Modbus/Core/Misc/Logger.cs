@@ -13,7 +13,7 @@ namespace Core.Misc
         /// <summary>
         /// Поле, определяющее, какой тип приложения запущен.
         /// </summary>
-        public static bool IsConsoleApplication;
+        public static bool WriteLogsToConsole;
 
         public static void WriteError(string error)
         {
@@ -23,7 +23,7 @@ namespace Core.Misc
             File.AppendAllText(logFileName, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
 
             // Если у нас запущено консольное приложение, то ошибку надо выводить и в консоль.
-            if (IsConsoleApplication)
+            if (WriteLogsToConsole)
             {
                 Console.WriteLine(error);
             }

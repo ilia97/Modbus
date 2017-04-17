@@ -6,3 +6,12 @@ D:\Projects\Modbus\Modbus\Core\bin\Release\Autofac.xml
 D:\Projects\Modbus\Modbus\Core\bin\Release\NModbus4.xml
 D:\Projects\Modbus\Modbus\Core\obj\Release\Core.dll
 D:\Projects\Modbus\Modbus\Core\obj\Release\Core.pdb
+D:\C#\Modbus\Modbus\Core\bin\Release\Core.dll
+D:\C#\Modbus\Modbus\Core\bin\Release\Core.pdb
+D:\C#\Modbus\Modbus\Core\bin\Release\Autofac.dll
+D:\C#\Modbus\Modbus\Core\bin\Release\NModbus4.dll
+D:\C#\Modbus\Modbus\Core\bin\Release\Autofac.xml
+D:\C#\Modbus\Modbus\Core\bin\Release\NModbus4.xml
+D:\C#\Modbus\Modbus\Core\obj\Release\Core.csprojResolveAssemblyReference.cache
+D:\C#\Modbus\Modbus\Core\obj\Release\Core.dll
+D:\C#\Modbus\Modbus\Core\obj\Release\Core.pdb
