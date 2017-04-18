@@ -1,0 +1,10 @@
+2017:04:18 22:49:50
+Settings file  wasn't found.
+
+
+2017:04:18 22:55:52
+Exception occured when getting application settings from "3MBP.ini".
+Logger settings must be placed on the line 2. For example:
+Logging=Yes
+
+

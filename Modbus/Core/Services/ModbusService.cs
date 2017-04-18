@@ -90,34 +90,34 @@ namespace Core.Services
 
                     foreach (var type in slave.Types)
                     {
-                        switch (type)
+                        switch (type.Item2)
                         {
                             case ModbusDataType.SInt16:
                                 // Берём из массива битов первые 16, чтобы сконвертировать их в знаковое 16-битное целое число.
-                                var sInt16Part = inputs.Take(8 * 2).ToArray();
+                                var sInt16Part = inputs.Take(8 * type.Item1).ToArray();
 
                                 // Обрезаем у массива эти первые 16 бит (16 бит = 2 байта).
-                                inputs = inputs.Skip(8 * 2).ToArray();
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
 
                                 // Преобразуем массив битов в строку, состоящую из единиц и нулей.
-                                var sInt16BinaryString = sInt16Part.Select(x => x ? 1 : 0);
+                                var sInt16BinaryString = string.Join("", sInt16Part.Select(x => x ? 1 : 0));
 
                                 // Конвертируем полученное двоичное число в знаковое 16-битное целое число.
-                                var sInt16 = Convert.ToInt16(string.Join("", sInt16BinaryString), 2);
+                                var sInt16 = Convert.ToInt16(sInt16BinaryString, 2);
 
                                 // Добавляем полученное число в список значений.
                                 results.Add(startAddress, sInt16.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += 1;
+                                startAddress += (ushort)type.Item1;
 
                                 break;
                             case ModbusDataType.UInt16:
                                 // Берём из массива битов первые 16, чтобы сконвертировать их в беззнаковое 16-битное целое число.
-                                var uInt16Part = inputs.Take(8 * 2).ToArray();
+                                var uInt16Part = inputs.Take(8 * type.Item1).ToArray();
 
                                 // Обрезаем у массива эти первые 16 бит (16 бит = 2 байта).
-                                inputs = inputs.Skip(8 * 2).ToArray();
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
 
                                 // Преобразуем массив битов в строку, состоящую из единиц и нулей.
                                 var binaryString = uInt16Part.Select(x => x ? 1 : 0);
@@ -129,15 +129,15 @@ namespace Core.Services
                                 results.Add(startAddress, uShort.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += 1;
+                                startAddress += (ushort)type.Item1;
 
                                 break;
                             case ModbusDataType.SInt32:
                                 // Берём из массива битов первые 32, чтобы сконвертировать их в знаковое 32-битное целое число.
-                                var sInt32Part = inputs.Take(8 * 4).ToArray();
+                                var sInt32Part = inputs.Take(8 * type.Item1).ToArray();
 
                                 // Обрезаем у массива эти первые 32 бит (32 бит = 4 байта).
-                                inputs = inputs.Skip(8 * 4).ToArray();
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
 
                                 // Преобразуем массив битов в строку, состоящую из единиц и нулей.
                                 var sInt32BinaryString = sInt32Part.Select(x => x ? 1 : 0);
@@ -149,15 +149,15 @@ namespace Core.Services
                                 results.Add(startAddress, sInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += 2;
+                                startAddress += (ushort)type.Item1;
 
                                 break;
                             case ModbusDataType.UInt32:
                                 // Берём из массива битов первые 32, чтобы сконвертировать их в беззнаковое 32-битное целое число.
-                                var uInt32Part = inputs.Take(8 * 4).ToArray();
+                                var uInt32Part = inputs.Take(8 * type.Item1).ToArray();
 
                                 // Обрезаем у массива эти первые 32 бит (32 бит = 4 байта).
-                                inputs = inputs.Skip(8 * 4).ToArray();
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
 
                                 // Преобразуем массив битов в строку, состоящую из единиц и нулей.
                                 var binaryUInt32String = uInt32Part.Select(x => x ? 1 : 0);
@@ -169,14 +169,34 @@ namespace Core.Services
                                 results.Add(startAddress, uInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += 2;
+                                startAddress += (ushort)type.Item1;
+
+                                break;
+                            case ModbusDataType.Hex:
+                                // Берём из массива битов первые 32, чтобы сконвертировать их в беззнаковое 32-битное целое число.
+                                var hexPart = inputs.Take(8 * type.Item1).ToArray();
+
+                                // Обрезаем у массива эти первые 32 бит (32 бит = 4 байта).
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
+
+                                // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+                                var binaryHexString = hexPart.Select(x => x ? 1 : 0);
+
+                                // Конвертируем полученное десятичное число в знаковое 32-битное целое число, после этого конвертируем число в 16-ричную систему счисления.
+                                var hex = Convert.ToUInt32(string.Join("", binaryHexString), 2).ToString("X");
+
+                                // Добавляем полученное число в список значений.
+                                results.Add(startAddress, hex);
+
+                                // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
+                                startAddress += (ushort)type.Item1;
 
                                 break;
                             case ModbusDataType.UtcTimestamp:
                                 // В данном случае мы должны считать целое число (тоже беззнаковое 32-битное) и преобразовать к дате.
                                 // Берём из массива битов первые 32, чтобы сконвертировать их в знаковое 32-битное целое число.
-                                var utcTimestampPart = inputs.Take(8 * 4).ToArray();
-                                inputs = inputs.Skip(8 * 4).ToArray();
+                                var utcTimestampPart = inputs.Take(8 * type.Item1).ToArray();
+                                inputs = inputs.Skip(8 * type.Item1).ToArray();
 
                                 // Преобразуем массив битов в строку, состоящую из единиц и нулей.
                                 var binaryUtcTimestampString = utcTimestampPart.Select(x => x ? 1 : 0);
@@ -189,52 +209,31 @@ namespace Core.Services
                                     new DateTime(1970, 1, 1).AddSeconds(utcTimestamp).ToString("yyyy.MM.dd HH:mm:ss"));
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += 2;
+                                startAddress += (ushort)type.Item1;
 
                                 break;
-                            case ModbusDataType.String18:
-                                bool[] string18Part;
+                            case ModbusDataType.String:
+                                bool[] stringPart;
 
-                                if (inputs.Length > 8 * 18)
+                                if (inputs.Length > 8 * type.Item1)
                                 {
-                                    string18Part = inputs.Take(8 * 18).ToArray();
-                                    inputs = inputs.Skip(8 * 18).ToArray();
+                                    stringPart = inputs.Take(8 * type.Item1).ToArray();
+                                    inputs = inputs.Skip(8 * type.Item1).ToArray();
 
-                                    results.Add(startAddress, string18Part.ConvertToString());
+                                    results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += 9;
+                                    startAddress += (ushort)(type.Item1 / 2);
                                 }
                                 else
                                 {
-                                    string18Part = inputs;
+                                    stringPart = inputs;
                                     inputs = new bool[0];
 
-                                    results.Add(startAddress, string18Part.ConvertToString());
+                                    results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += (ushort)(string18Part.Length / 16);
+                                    startAddress += (ushort)(stringPart.Length / 16);
                                 }
-                                break;
-                            case ModbusDataType.String20:
-                                bool[] string20Part;
 
-                                if (inputs.Length > 8 * 20)
-                                {
-                                    string20Part = inputs.Take(8 * 20).ToArray();
-                                    inputs = inputs.Skip(8 * 20).ToArray();
-
-                                    results.Add(startAddress, string20Part.ConvertToString());
-
-                                    startAddress += 10;
-                                }
-                                else
-                                {
-                                    string20Part = inputs;
-                                    inputs = new bool[0];
-
-                                    results.Add(startAddress, string20Part.ConvertToString());
-
-                                    startAddress += (ushort)(string20Part.Length / 16);
-                                }
                                 break;
                             default:
                                 throw new ArgumentOutOfRangeException();

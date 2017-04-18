@@ -12,6 +12,5 @@ D:\C#\Modbus\Modbus\Core\bin\Debug\Autofac.dll
 D:\C#\Modbus\Modbus\Core\bin\Debug\NModbus4.dll
 D:\C#\Modbus\Modbus\Core\bin\Debug\Autofac.xml
 D:\C#\Modbus\Modbus\Core\bin\Debug\NModbus4.xml
-D:\C#\Modbus\Modbus\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\C#\Modbus\Modbus\Core\obj\Debug\Core.dll
 D:\C#\Modbus\Modbus\Core\obj\Debug\Core.pdb

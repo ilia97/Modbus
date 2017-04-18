@@ -166,22 +166,39 @@ namespace Core.DataAccess
                         {
                             switch (x.ToLower())
                             {
-                                case "string8_18":
-                                    return ModbusDataType.String18;
-                                case "string8_20":
-                                    return ModbusDataType.String20;
                                 case "utc_timestamp":
-                                    return ModbusDataType.UtcTimestamp;
+                                    return Tuple.Create(4, ModbusDataType.UtcTimestamp);
                                 case "sint16":
-                                    return ModbusDataType.SInt16;
+                                    return Tuple.Create(2, ModbusDataType.SInt16);
                                 case "uint16":
-                                    return ModbusDataType.UInt16;
+                                    return Tuple.Create(2, ModbusDataType.UInt16);
                                 case "sint32":
-                                    return ModbusDataType.SInt32;
+                                    return Tuple.Create(4, ModbusDataType.SInt32);
                                 case "uint32":
-                                    return ModbusDataType.UInt32;
+                                    return Tuple.Create(4, ModbusDataType.UInt32);
+                                case "hex":
+                                    return Tuple.Create(2, ModbusDataType.Hex);
                                 default:
-                                    throw new Exception();
+                                    if (x.ToLower().StartsWith("string8_"))
+                                    {
+                                        try
+                                        {
+                                            // Количество байт записано после части "string8_" (8 символов).
+                                            var bytesCount = Convert.ToInt32(x.ToLower().Substring(8));
+
+                                            return Tuple.Create(bytesCount, ModbusDataType.String);
+                                        }
+                                        catch
+                                        {
+                                            throw new InvalidTypeException(
+                                                $"Exception occured when getting application settings from \"{initFileName}\".\r\n String data type has an incorrect format (line {i + 1}).\r\n Correct string data type format: String8_[number of chars in string].");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidTypeException(
+                                            $"Exception occured when getting application settings from \"{initFileName}\".\r\n Data type has an incorrect format (line {i + 1}).\r\n Correct data types are: UInt16, SInt16, UInt32, SInt32, String8_[number of chars in string], UtcTimestamp, Hex.");
+                                    }
                             }
                         }).ToList()
                     });

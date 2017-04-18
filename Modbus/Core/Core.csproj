@@ -57,6 +57,7 @@
     <Compile Include="Misc\Enums\ModbusDataType.cs" />
     <Compile Include="Misc\Enums\PortType.cs" />
     <Compile Include="Misc\Exceptions\InvalidSettingsException.cs" />
+    <Compile Include="Misc\Exceptions\InvalidTypeException.cs" />
     <Compile Include="Misc\Logger.cs" />
     <Compile Include="Models\MasterSettingsCom.cs" />
     <Compile Include="Models\MasterSettingsIp.cs" />

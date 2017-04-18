@@ -26,7 +26,8 @@ namespace Core.Models
 
         /// <summary>
         /// Список типов данных, которые содержатся в группе.
+        /// Первое число - число регистров, выделяемое на данный тип.
         /// </summary>
-        public List<ModbusDataType> Types { set; get; }
+        public List<Tuple<int, ModbusDataType>> Types { set; get; }
     }
 }

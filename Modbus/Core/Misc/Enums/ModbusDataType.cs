@@ -2,12 +2,12 @@
 {
     public enum ModbusDataType
     {
-        String18,
-        String20,
+        String,
         UtcTimestamp,
         SInt16,
         UInt16,
         SInt32,
-        UInt32
+        UInt32,
+        Hex
     }
 }

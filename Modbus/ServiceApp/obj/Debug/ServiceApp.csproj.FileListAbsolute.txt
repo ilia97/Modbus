@@ -20,5 +20,7 @@ D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Core.pdb
 D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\Autofac.xml
 D:\C#\Modbus\Modbus\ServiceApp\bin\Debug\NModbus4.xml
 D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.csprojResolveAssemblyReference.cache
+D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.ProjectInstaller.resources
+D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\ServiceApp.csproj.GenerateResource.Cache
 D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\3MBP.exe
 D:\C#\Modbus\Modbus\ServiceApp\obj\Debug\3MBP.pdb

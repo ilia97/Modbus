@@ -104,7 +104,7 @@ namespace ConsoleApp
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Logger.WriteError(ex.Message);
                     Console.ReadLine();
                 }
             }
