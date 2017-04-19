@@ -1,10 +1,3 @@
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.dll
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.dll
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.dll
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.pdb
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.xml
-D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.xml
-D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.csprojResolveAssemblyReference.cache
 D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.config
 D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
 D:\C#\Modbus\Modbus\ServiceApp\bin\Release\3MBP.pdb
@@ -22,6 +15,13 @@ D:\C#\Modbus\Modbus\ServiceApp\obj\Release\3MBP.pdb
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe.config
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\3MBP.exe
 D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\3MBP.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.dll
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Core.pdb
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\Autofac.xml
+D:\Projects\Modbus\Modbus\ServiceApp\bin\Release\NModbus4.xml
+D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.csprojResolveAssemblyReference.cache
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.ProjectInstaller.resources
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\ServiceApp.csproj.GenerateResource.Cache
 D:\Projects\Modbus\Modbus\ServiceApp\obj\Release\3MBP.exe
