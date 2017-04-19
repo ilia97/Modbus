@@ -1,9 +1,4 @@
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.exe.config
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.exe
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\ConsoleApp.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache
-D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.exe
-D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\Core.pdb
@@ -22,3 +17,8 @@ D:\C#\Modbus\Modbus\ConsoleApp\bin\Debug\NModbus4.xml
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\3MBP.exe
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Debug\3MBP.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\3MBP.exe.config
+D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\3MBP.exe
+D:\Projects\Modbus\Modbus\ConsoleApp\obj\Debug\3MBP.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\3MBP.exe
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Debug\3MBP.pdb

@@ -1,14 +1,9 @@
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\ConsoleApp.exe.config
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\ConsoleApp.exe
-D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\ConsoleApp.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\Autofac.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\Core.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\NModbus4.dll
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\Core.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\Autofac.xml
 D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\NModbus4.xml
-D:\Projects\Modbus\Modbus\ConsoleApp\obj\Release\ConsoleApp.exe
-D:\Projects\Modbus\Modbus\ConsoleApp\obj\Release\ConsoleApp.pdb
 D:\Projects\Modbus\Modbus\ConsoleApp\obj\Release\ConsoleApp.csprojResolveAssemblyReference.cache
 D:\C#\Modbus\Modbus\ConsoleApp\bin\Release\3MBP.exe.config
 D:\C#\Modbus\Modbus\ConsoleApp\bin\Release\3MBP.exe
@@ -22,3 +17,8 @@ D:\C#\Modbus\Modbus\ConsoleApp\bin\Release\NModbus4.xml
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Release\ConsoleApp.csprojResolveAssemblyReference.cache
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Release\3MBP.exe
 D:\C#\Modbus\Modbus\ConsoleApp\obj\Release\3MBP.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\3MBP.exe.config
+D:\Projects\Modbus\Modbus\ConsoleApp\obj\Release\3MBP.exe
+D:\Projects\Modbus\Modbus\ConsoleApp\obj\Release\3MBP.pdb
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\3MBP.exe
+D:\Projects\Modbus\Modbus\ConsoleApp\bin\Release\3MBP.pdb

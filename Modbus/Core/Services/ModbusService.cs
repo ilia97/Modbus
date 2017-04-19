@@ -42,6 +42,8 @@ namespace Core.Services
                 master = ModbusIpMaster.CreateIp(client);
 
                 results = GetDataFromConnection(master, masterSettings);
+
+                client.Close();
             }
             else
             {
@@ -109,7 +111,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt16.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt16:
@@ -129,7 +131,7 @@ namespace Core.Services
                                 results.Add(startAddress, uShort.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.SInt32:
@@ -149,7 +151,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt32:
@@ -169,7 +171,7 @@ namespace Core.Services
                                 results.Add(startAddress, uInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.Hex:
@@ -189,7 +191,7 @@ namespace Core.Services
                                 results.Add(startAddress, hex);
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UtcTimestamp:
@@ -209,7 +211,7 @@ namespace Core.Services
                                     new DateTime(1970, 1, 1).AddSeconds(utcTimestamp).ToString("yyyy.MM.dd HH:mm:ss"));
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)type.Item1;
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.String:
