@@ -188,7 +188,7 @@ namespace Core.Services
                                 var hex = Convert.ToUInt32(string.Join("", binaryHexString), 2).ToString("X");
 
                                 // Добавляем полученное число в список значений.
-                                results.Add(startAddress, hex);
+                                results.Add(startAddress, $"0x{hex}");
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
                                 startAddress += (ushort)(type.Item1 / 2);
