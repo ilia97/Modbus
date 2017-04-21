@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using Core.DataAccess.Interfaces;
 using Core.Misc;
 using Core.Misc.Enums;
+using Core.Misc.Exceptions;
 using Core.Models;
 using Core.Services.Interfaces;
 using Modbus.Device;
@@ -86,6 +87,12 @@ namespace Core.Services
                     var registers = master.ReadHoldingRegisters(masterSettings.DeviceId, slave.StartAddress,
                         slave.NumberOfRegisters);
 
+                    if (registers == null || registers.Length == 0)
+                    {
+                        throw new EmptyResultException(
+                            $"Slave with address {masterSettings.DeviceId} returned an empty result when reading {slave.NumberOfRegisters} registers starting with register number {slave.StartAddress}.");
+                    }
+
                     var inputs = registers.ConvertToBitArray();
 
                     var startAddress = slave.StartAddress;
@@ -111,7 +118,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt16.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt16:
@@ -131,7 +138,7 @@ namespace Core.Services
                                 results.Add(startAddress, uShort.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.SInt32:
@@ -151,7 +158,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt32:
@@ -171,7 +178,7 @@ namespace Core.Services
                                 results.Add(startAddress, uInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.Hex:
@@ -191,7 +198,7 @@ namespace Core.Services
                                 results.Add(startAddress, $"0x{hex}");
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UtcTimestamp:
@@ -208,10 +215,12 @@ namespace Core.Services
 
                                 // Добавляем полученное число в список значений.
                                 results.Add(startAddress,
-                                    new DateTime(1970, 1, 1).AddSeconds(utcTimestamp).ToString("yyyy.MM.dd HH:mm:ss"));
+                                    DateTime.SpecifyKind(new DateTime(1970, 1, 1).AddSeconds(utcTimestamp),
+                                            DateTimeKind.Utc)
+                                        .ToString("yyyy.MM.dd HH:mm:ss"));
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort)(type.Item1 / 2);
+                                startAddress += (ushort) (type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.String:
@@ -224,7 +233,7 @@ namespace Core.Services
 
                                     results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += (ushort)(type.Item1 / 2);
+                                    startAddress += (ushort) (type.Item1 / 2);
                                 }
                                 else
                                 {
@@ -233,7 +242,7 @@ namespace Core.Services
 
                                     results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += (ushort)(stringPart.Length / 16);
+                                    startAddress += (ushort) (stringPart.Length / 16);
                                 }
 
                                 break;
@@ -242,7 +251,7 @@ namespace Core.Services
                         }
                     }
                 }
-                catch (SlaveException slaveException)
+                catch (Exception slaveException)
                 {
                     if (masterSettings.IsLoggerEnabled)
                     {

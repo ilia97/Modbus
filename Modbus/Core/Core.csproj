@@ -56,6 +56,7 @@
     <Compile Include="Misc\Converter.cs" />
     <Compile Include="Misc\Enums\ModbusDataType.cs" />
     <Compile Include="Misc\Enums\PortType.cs" />
+    <Compile Include="Misc\Exceptions\EmptyResultException.cs" />
     <Compile Include="Misc\Exceptions\InvalidSettingsException.cs" />
     <Compile Include="Misc\Exceptions\InvalidTypeException.cs" />
     <Compile Include="Misc\Logger.cs" />

@@ -27,7 +27,7 @@ namespace ConsoleApp
 
                     if (masterSettings.Period > 0)
                     {
-                        object timerLock = new object();
+                        var timerLock = new object();
 
                         // Если интервал запуска не равен нулю, то запускаем опрос ведомых устройств с этим интервалом (1с = 1000мс).
                         var timer = new Timer(masterSettings.Period * 1000);

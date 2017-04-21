@@ -32,7 +32,7 @@ namespace Core.DataAccess
             }
 
             // Добавляем строку, содержащую текущее время суток и значение для каждого из ведомых устройств.
-            File.AppendAllText(filePath, $"{DateTime.Now:HH:mm:ss};{string.Join(";", registers.Values)}\r\n");
+            File.AppendAllText(filePath, $"{DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc):HH:mm:ss};{string.Join(";", registers.Values)}\r\n");
         }
     }
 }
