@@ -214,10 +214,9 @@ namespace Core.Services
                                 var utcTimestamp = Convert.ToUInt32(string.Join("", binaryUtcTimestampString), 2);
 
                                 // Добавляем полученное число в список значений.
-                                results.Add(startAddress,
-                                    DateTime.SpecifyKind(new DateTime(1970, 1, 1).AddSeconds(utcTimestamp),
-                                            DateTimeKind.Utc)
-                                        .ToString("yyyy.MM.dd HH:mm:ss"));
+                                results.Add(startAddress, new DateTime(1970, 1, 1).AddSeconds(utcTimestamp)
+                                    .ToLocalTime()
+                                    .ToString("yyyy.MM.dd HH:mm:ss"));
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
                                 startAddress += (ushort) (type.Item1 / 2);

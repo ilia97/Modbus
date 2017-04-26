@@ -15,3 +15,4 @@ D:\Projects\Modbus\Modbus\Core\bin\Debug\NModbus4.xml
 D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.dll
 D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.pdb
 D:\C#\Modbus\Modbus\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Projects\Modbus\Modbus\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache

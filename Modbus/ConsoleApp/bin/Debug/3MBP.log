@@ -244,3 +244,7 @@ Exception Code: 2 - The data address received in the query is not an allowable a
 Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:502
 
 
+2017:04:26 11:21:06
+No connection could be made because the target machine actively refused it 127.0.0.1:502
+
+
