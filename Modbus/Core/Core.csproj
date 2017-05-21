@@ -60,6 +60,7 @@
     <Compile Include="Misc\Exceptions\InvalidSettingsException.cs" />
     <Compile Include="Misc\Exceptions\InvalidTypeException.cs" />
     <Compile Include="Misc\Logger.cs" />
+    <Compile Include="Misc\PackagesCounter.cs" />
     <Compile Include="Models\MasterSettingsCom.cs" />
     <Compile Include="Models\MasterSettingsIp.cs" />
     <Compile Include="Models\MasterSettings.cs" />

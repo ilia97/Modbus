@@ -61,8 +61,22 @@ namespace Core.DataAccess
                     throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nLogger value must be equal to \"Yes\" or \"No\" (line 2). For example:\r\nLogging=Yes");
             }
 
+            // На первой строке написана строка "[Main]" просто для удобства чтения, её игнорируем.
+            // На второй строке после знака равно должна располагаться настройка, отвечающая за то, включено логирование или нет.
+            if (fileLines[2].Split('=')[0].Trim().ToLower() != "statflushperiod")
+            {
+                throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nStatFlushPeriod settings must be placed on the line 3. For example:\r\nStatFlushPeriod=1");
+            }
+
+            int statFlushPeriod;
+            var statFlushPeriodString = fileLines[1].Split('=')[1].Trim().ToLower();
+            if (!int.TryParse(statFlushPeriodString, out statFlushPeriod))
+            {
+                statFlushPeriod = 0;
+            }
+
             // На третьей строке после знака равно располагается настройка отвечающая за величину таймаута запроса.
-            if (fileLines[2].Split('=')[0].Trim().ToLower() != "timeout")
+            if (fileLines[3].Split('=')[0].Trim().ToLower() != "timeout")
             {
                 throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nTimeout settings must be placed on the line 3. For example:\r\nTimeout=1000");
             }
@@ -71,7 +85,7 @@ namespace Core.DataAccess
             try
             {
                 // Преобразуем к целому числу. 
-                timeout = Convert.ToInt32(fileLines[2].Split('=')[1].Trim());
+                timeout = Convert.ToInt32(fileLines[3].Split('=')[1].Trim());
             }
             catch (Exception)
             {
@@ -79,12 +93,12 @@ namespace Core.DataAccess
             }
 
             // На четвёртой строке после знака равно располагается тип соединения (COM или IP).
-            if (fileLines[3].Split('=')[0].Trim().ToLower() != "port")
+            if (fileLines[4].Split('=')[0].Trim().ToLower() != "port")
             {
                 throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nPort settings must be placed on the line 4. For example:\r\nPort=IP");
             }
 
-            var portTypeString = fileLines[3].Split('=')[1].Trim();
+            var portTypeString = fileLines[4].Split('=')[1].Trim();
             var portType = PortType.IP;
             switch (portTypeString.ToLower())
             {
@@ -98,7 +112,7 @@ namespace Core.DataAccess
             }
 
             // На шестой строке после знака равно располагается идентификатор устройства.
-            if (fileLines[5].Split('=')[0].Trim().ToLower() != "deviceid")
+            if (fileLines[6].Split('=')[0].Trim().ToLower() != "deviceid")
             {
                 throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nDeviceID settings must be placed on the line 6. For example:\r\nDeviceID=10");
             }
@@ -107,7 +121,7 @@ namespace Core.DataAccess
             try
             {
                 // Преобразуем к целому однобайтовому числу. 
-                deviceId = Convert.ToByte(fileLines[5].Split('=')[1]);
+                deviceId = Convert.ToByte(fileLines[6].Split('=')[1]);
             }
             catch (Exception)
             {
@@ -115,7 +129,7 @@ namespace Core.DataAccess
             }
 
             // На седьмой строке после знака равно располагается интервал опроса контроллеров.
-            if (fileLines[6].Split('=')[0].Trim().ToLower() != "period")
+            if (fileLines[7].Split('=')[0].Trim().ToLower() != "period")
             {
                 throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nPeriod settings must be placed on the line 7. For example:\r\nPeriod=10");
             }
@@ -124,7 +138,7 @@ namespace Core.DataAccess
             try
             {
                 // Преобразуем к целому однобайтовому числу. 
-                period = Convert.ToInt32(fileLines[6].Split('=')[1]);
+                period = Convert.ToInt32(fileLines[7].Split('=')[1]);
             }
             catch (Exception)
             {
@@ -134,7 +148,7 @@ namespace Core.DataAccess
             // На восьмой строке написана строка "[Reading]" просто для удобства чтения, её игнорируем.
             // На строках, начиная с девятой расположена информация о группах контроллеров.
             var groups = new List<GroupSettings>();
-            for (var i = 8; i < fileLines.Count; i++)
+            for (var i = 9; i < fileLines.Count; i++)
             {
                 try
                 {
@@ -216,12 +230,12 @@ namespace Core.DataAccess
                 case PortType.IP:
                     try
                     {
-                        if (fileLines[4].Split('=')[0].Trim().ToLower() != "ip")
+                        if (fileLines[5].Split('=')[0].Trim().ToLower() != "ip")
                         {
                             throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nIP connection settings must be placed on the line 5. For example:\r\nIP=127.0.0.1:502");
                         }
 
-                        var ipAddress = fileLines[4].Split('=')[1];
+                        var ipAddress = fileLines[5].Split('=')[1];
 
                         return new MasterSettingsIp
                         {
@@ -231,6 +245,7 @@ namespace Core.DataAccess
                             DeviceId = deviceId,
                             Port = Convert.ToInt32(ipAddress.Split(':')[1]),
                             SlaveSettings = groups,
+                            StatFlushPeriod = statFlushPeriod,
                             Timeout = timeout
                         };
                     }
@@ -241,11 +256,11 @@ namespace Core.DataAccess
                 case PortType.COM:
                     try
                     {
-                        if (fileLines[4].Split('=')[0].Trim().ToLower() != "com")
+                        if (fileLines[5].Split('=')[0].Trim().ToLower() != "com")
                         {
                             throw new InvalidSettingsException($"Exception occured when getting application settings from \"{initFileName}\".\r\nCOM connection settings must be placed on the line 5. For example:\r\nCOM=COM9;9600;8N1");
                         }
-                        var comSettings = fileLines[4].Split('=')[1].Split(';');
+                        var comSettings = fileLines[5].Split('=')[1].Split(';');
 
                         var portName = comSettings[0];
                         var baudRate = Convert.ToInt32(comSettings[1]);
@@ -299,6 +314,7 @@ namespace Core.DataAccess
                             Period = period,
                             DeviceId = deviceId,
                             SlaveSettings = groups,
+                            StatFlushPeriod = statFlushPeriod,
                             Timeout = timeout
                         };
                     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Timers;
 using System.ServiceProcess;
+using System.Diagnostics;
 using Autofac;
 using Core.Services.Interfaces;
 using Core.DataAccess.Interfaces;
@@ -28,6 +29,11 @@ namespace ServiceApp
 
         protected override void OnStart(string[] args)
         {
+            System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+            Logger.Write($"Service 3MBP v{version} starting poll");
+
             try
             {
                 // Получаем данные из репозитория
@@ -36,11 +42,11 @@ namespace ServiceApp
                 if (masterSettings.Period > 0)
                 {
                     // Если интервал запуска не равен нулю, то запускаем опрос ведомых устройств с этим интервалом (1с = 1000мс).
-                    var timer = new Timer(masterSettings.Period * 1000);
-                    timer.Elapsed += (sender, e) => _modbusService.GetDataFromSlaves(masterSettings);
+                    var slavesDataReaderTimer = new Timer(masterSettings.Period * 1000);
+                    slavesDataReaderTimer.Elapsed += (sender, e) => _modbusService.GetDataFromSlaves(masterSettings);
 
                     // Так как таймер запускает функцию только по окончанию периода времени, то вначале запускаем таймер, а потом таймер.
-                    timer.Start();
+                    slavesDataReaderTimer.Start();
                     _modbusService.GetDataFromSlaves(masterSettings);
                 }
                 else
@@ -48,10 +54,17 @@ namespace ServiceApp
                     // Если интервал запуска равен нулю, то запускаем опрос ведомых устройств один раз.
                     _modbusService.GetDataFromSlaves(masterSettings);
                 }
+
+                if (masterSettings.StatFlushPeriod > 0)
+                {
+                    var packagesLogTimer = new Timer(masterSettings.StatFlushPeriod * 1000 * 60);
+                    packagesLogTimer.Elapsed += (sender, e) => Logger.Write($"Sent={PackagesCounter.RequestedPackagesCount}; Rec={PackagesCounter.RecievedPackagesCount}: RecNOK={PackagesCounter.LostPackagesCount}");
+                    packagesLogTimer.Start();
+                }
             }
             catch (Exception ex)
             {
-                Logger.WriteError(ex.Message);
+                Logger.Write(ex.Message);
             }
         }
 

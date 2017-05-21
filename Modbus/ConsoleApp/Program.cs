@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using Autofac;
 using Core.Services.Interfaces;
@@ -22,6 +23,12 @@ namespace ConsoleApp
 
                 try
                 {
+
+                    System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                    var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+                    string version = fvi.FileVersion;
+                    Logger.Write($"Console Application 3MBP v{version} starting poll");
+
                     // Получаем данные из репозитория
                     var masterSettings = modbusMasterInitializer.GetMasterSettings();
 
@@ -46,6 +53,13 @@ namespace ConsoleApp
                         Monitor.Enter(timerLock);
                         modbusService.GetDataFromSlaves(masterSettings);
                         Monitor.Exit(timerLock);
+
+                        if (masterSettings.StatFlushPeriod > 0)
+                        {
+                            var packagesLogTimer = new Timer(masterSettings.StatFlushPeriod * 1000 * 60);
+                            packagesLogTimer.Elapsed += (sender, e) => Logger.Write($"Sent={PackagesCounter.RequestedPackagesCount}; Rec={PackagesCounter.RecievedPackagesCount}: RecNOK={PackagesCounter.LostPackagesCount}");
+                            packagesLogTimer.Start();
+                        }
 
                         // Запускаем бесконечный цикл 
                         while (timer.Enabled)
@@ -104,7 +118,7 @@ namespace ConsoleApp
                 }
                 catch (Exception ex)
                 {
-                    Logger.WriteError(ex.Message);
+                    Logger.Write(ex.Message);
                     Console.ReadLine();
                 }
             }

@@ -16,6 +16,11 @@ namespace Core.Models
         public bool IsLoggerEnabled { set; get; }
 
         /// <summary>
+        /// Свойство, указывающее период, с которым необходимо выводить количество отправленных и обработанных пакетов.
+        /// </summary>
+        public int StatFlushPeriod { set; get; }
+
+        /// <summary>
         /// Свойство, указывающее таймаут ожидания ответа от ведомого устройства.
         /// </summary>
         public int Timeout { set; get; }

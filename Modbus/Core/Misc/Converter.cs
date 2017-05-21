@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Core.Misc
@@ -47,6 +48,15 @@ namespace Core.Misc
             }
 
             return result.ToArray();
+        }
+
+        public static string ConvertToHex(this bool[] inputs)
+        {
+            // Преобразуем массив битов в строку, состоящую из единиц и нулей.
+            var binaryHexString = inputs.Select(x => x ? 1 : 0);
+
+            // Конвертируем полученное десятичное число в знаковое 32-битное целое число, после этого конвертируем число в 16-ричную систему счисления.
+            return $"0x{Convert.ToUInt32(string.Join("", binaryHexString), 2).ToString("X")}";
         }
     }
 }

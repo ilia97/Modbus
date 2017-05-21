@@ -18,6 +18,8 @@ namespace Core.Services
     {
         private readonly IModbusSlavesRepository _modbusSlavesRepository;
 
+        private static bool isConnectionLost;
+
         public ModbusService(IModbusSlavesRepository modbusSlavesRepository)
         {
             _modbusSlavesRepository = modbusSlavesRepository;
@@ -32,43 +34,54 @@ namespace Core.Services
             ModbusMaster master;
             var results = new Dictionary<int, string>();
 
-            var masterSettingsIp = masterSettings as MasterSettingsIp;
-            if (masterSettingsIp != null)
+            try
             {
-                // Если используется IP адресс, то используем TCP клиент для установления соединения.
-                var client = new TcpClient(masterSettingsIp.Host,
-                    masterSettingsIp.Port)
-                { ReceiveTimeout = masterSettings.Timeout };
-
-                master = ModbusIpMaster.CreateIp(client);
-
-                results = GetDataFromConnection(master, masterSettings);
-
-                client.Close();
-            }
-            else
-            {
-                var masterSettingsCom = masterSettings as MasterSettingsCom;
-                if (masterSettingsCom != null)
+                var masterSettingsIp = masterSettings as MasterSettingsIp;
+                if (masterSettingsIp != null)
                 {
-                    // Случай, если используется СОМ соединение.
-                    var port = new SerialPort(masterSettingsCom.PortName)
-                    {
-                        BaudRate = masterSettingsCom.BaudRate,
-                        DataBits = masterSettingsCom.DataBits,
-                        Parity = masterSettingsCom.Parity,
-                        StopBits = masterSettingsCom.StopBits,
-                        ReadTimeout = masterSettingsCom.Timeout
-                    };
-                    
-                    port.Open();
+                    // Если используется IP адресс, то используем TCP клиент для установления соединения.
+                    var client = new TcpClient(masterSettingsIp.Host,
+                        masterSettingsIp.Port)
+                    { ReceiveTimeout = masterSettings.Timeout };
 
-                    master = ModbusSerialMaster.CreateRtu(port);
+                    master = ModbusIpMaster.CreateIp(client);
 
                     results = GetDataFromConnection(master, masterSettings);
 
-                    port.Close();
+                    client.Close();
                 }
+                else
+                {
+                    var masterSettingsCom = masterSettings as MasterSettingsCom;
+                    if (masterSettingsCom != null)
+                    {
+                        // Случай, если используется СОМ соединение.
+                        var port = new SerialPort(masterSettingsCom.PortName)
+                        {
+                            BaudRate = masterSettingsCom.BaudRate,
+                            DataBits = masterSettingsCom.DataBits,
+                            Parity = masterSettingsCom.Parity,
+                            StopBits = masterSettingsCom.StopBits,
+                            ReadTimeout = masterSettingsCom.Timeout
+                        };
+
+                        port.Open();
+
+                        master = ModbusSerialMaster.CreateRtu(port);
+
+                        results = GetDataFromConnection(master, masterSettings);
+
+                        port.Close();
+                    }
+                }
+            }
+            catch (SocketException ex)
+            {
+                if (!isConnectionLost)
+                {
+                    Logger.Write(ex.Message);
+                }
+                isConnectionLost = true;
             }
 
             _modbusSlavesRepository.SaveData(results);
@@ -82,10 +95,20 @@ namespace Core.Services
 
             foreach (var slave in masterSettings.SlaveSettings)
             {
+                var hexResults = new Dictionary<int, string>();
+
                 try
                 {
+                    if (masterSettings.IsLoggerEnabled)
+                    {
+                        Logger.WriteDebug($"Sent request to a slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters}.");
+                    }
+
                     var registers = master.ReadHoldingRegisters(masterSettings.DeviceId, slave.StartAddress,
                         slave.NumberOfRegisters);
+                    
+                    PackagesCounter.RequestedPackagesCount += slave.NumberOfRegisters * 2;
+                    PackagesCounter.RecievedPackagesCount += registers.Length * 2;
 
                     if (registers == null || registers.Length == 0)
                     {
@@ -96,6 +119,32 @@ namespace Core.Services
                     var inputs = registers.ConvertToBitArray();
 
                     var startAddress = slave.StartAddress;
+
+                    // Если включено логирование, записываем в лог значения всех регистров.
+                    if (masterSettings.IsLoggerEnabled)
+                    {
+                        var hexStartAddress = slave.StartAddress;
+
+                        var inputsCopy = new bool[inputs.Length];
+                        Array.Copy(inputs, inputsCopy, inputs.Length);
+
+                        while (inputsCopy.Length > 0)
+                        {
+                            var hexPart = inputsCopy.Take(16).ToArray();
+                            
+                            inputsCopy = inputsCopy.Skip(16).ToArray();
+                            
+                            results.Add(hexStartAddress, hexPart.ConvertToHex());
+                            
+                            hexStartAddress += 1;
+
+                            break;
+                        }
+                        var hex = Converter.ConvertToHex(inputs);
+                        
+                        // Добавляем полученное число в список значений.
+                        results.Add(slave.StartAddress, $"0x{hex}");
+                    }
 
                     foreach (var type in slave.Types)
                     {
@@ -118,7 +167,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt16.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt16:
@@ -138,7 +187,7 @@ namespace Core.Services
                                 results.Add(startAddress, uShort.ToString());
 
                                 // Перемещаем указатель на следующий регистр (16 бит = 2 байта = 1 регистр)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.SInt32:
@@ -158,7 +207,7 @@ namespace Core.Services
                                 results.Add(startAddress, sInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UInt32:
@@ -178,7 +227,7 @@ namespace Core.Services
                                 results.Add(startAddress, uInt32.ToString());
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.Hex:
@@ -198,7 +247,7 @@ namespace Core.Services
                                 results.Add(startAddress, $"0x{hex}");
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.UtcTimestamp:
@@ -219,7 +268,7 @@ namespace Core.Services
                                     .ToString("yyyy.MM.dd HH:mm:ss"));
 
                                 // Перемещаем указатель на следующий регистр (32 бита = 4 байта = 2 регистра)
-                                startAddress += (ushort) (type.Item1 / 2);
+                                startAddress += (ushort)(type.Item1 / 2);
 
                                 break;
                             case ModbusDataType.String:
@@ -232,7 +281,7 @@ namespace Core.Services
 
                                     results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += (ushort) (type.Item1 / 2);
+                                    startAddress += (ushort)(type.Item1 / 2);
                                 }
                                 else
                                 {
@@ -241,7 +290,7 @@ namespace Core.Services
 
                                     results.Add(startAddress, stringPart.ConvertToString());
 
-                                    startAddress += (ushort) (stringPart.Length / 16);
+                                    startAddress += (ushort)(stringPart.Length / 16);
                                 }
 
                                 break;
@@ -249,13 +298,32 @@ namespace Core.Services
                                 throw new ArgumentOutOfRangeException();
                         }
                     }
-                }
-                catch (Exception slaveException)
-                {
+                    
                     if (masterSettings.IsLoggerEnabled)
                     {
-                        Logger.WriteError(slaveException.Message);
+                        var hexResultsString = string.Join(";\r\n", hexResults.Select(x => $"{x.Key}: {x.Value}"));
+
+                        Logger.WriteDebug($"Recieved data from slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters};\r\n{hexResultsString}");
                     }
+                }
+                catch (SlaveException slaveException)
+                {
+                    switch (slaveException.SlaveExceptionCode)
+                    {
+                        case 130:
+                            if (!isConnectionLost)
+                            {
+                                Logger.Write(slaveException.Message);
+                            }
+                            isConnectionLost = true;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Logger.Write(exception.Message);
                 }
             }
 

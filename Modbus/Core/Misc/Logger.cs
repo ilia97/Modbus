@@ -15,10 +15,12 @@ namespace Core.Misc
         /// </summary>
         public static bool WriteLogsToConsole;
 
-        public static void WriteError(string error)
+        private static string logFileName = ConfigurationManager.AppSettings["LogFileName"];
+        private static string dataFolderName = ConfigurationManager.AppSettings["DataFolderName"];
+
+        public static void Write(string error)
         {
             // Берём имя файла логирования из настроек приложения.
-            var logFileName = ConfigurationManager.AppSettings["LogFileName"];
             
             File.AppendAllText(logFileName, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
 
@@ -27,6 +29,26 @@ namespace Core.Misc
             {
                 Console.WriteLine(error);
             }
+        }
+
+        public static void WriteDebug(string text)
+        {
+            var dataFolderName = ConfigurationManager.AppSettings["DataFolderName"];
+
+            if (!Directory.Exists(dataFolderName))
+            {
+                // Если такой директории не существует, создаём её.
+                Directory.CreateDirectory(dataFolderName);
+            }
+
+            // Генерируем имя файла, исходя из текущей даты.
+            var fileName = $"3MBP_{DateTime.Now:yyyy-MM-dd}.dbg";
+
+            // Генерируем пусть к файлу исходя из его имени и имени подкаталога.
+            var filePath = Path.Combine(dataFolderName, fileName);
+
+            // Добавляем строку, содержащую текущее время суток и значение для каждого из ведомых устройств.
+            File.AppendAllText(filePath, $"{DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc):HH:mm:ss}\r\n{text}\r\n\r\n\r\n");
         }
     }
 }
