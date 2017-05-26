@@ -11,6 +11,7 @@ using Core.Models;
 using Core.Services.Interfaces;
 using Modbus.Device;
 using Modbus;
+using System.Collections;
 
 namespace Core.Services
 {
@@ -95,7 +96,9 @@ namespace Core.Services
 
             foreach (var slave in masterSettings.SlaveSettings)
             {
-                var hexResults = new Dictionary<int, string>();
+                string hexResults = "";
+
+                PackagesCounter.RequestedPackagesCount += 1;
 
                 try
                 {
@@ -106,9 +109,6 @@ namespace Core.Services
 
                     var registers = master.ReadHoldingRegisters(masterSettings.DeviceId, slave.StartAddress,
                         slave.NumberOfRegisters);
-                    
-                    PackagesCounter.RequestedPackagesCount += slave.NumberOfRegisters * 2;
-                    PackagesCounter.RecievedPackagesCount += registers.Length * 2;
 
                     if (registers == null || registers.Length == 0)
                     {
@@ -116,35 +116,14 @@ namespace Core.Services
                             $"Slave with address {masterSettings.DeviceId} returned an empty result when reading {slave.NumberOfRegisters} registers starting with register number {slave.StartAddress}.");
                     }
 
+                    PackagesCounter.RecievedPackagesCount += 1;
+                    isConnectionLost = false;
+
                     var inputs = registers.ConvertToBitArray();
 
+                    hexResults = inputs.ConvertToHex();
+
                     var startAddress = slave.StartAddress;
-
-                    // Если включено логирование, записываем в лог значения всех регистров.
-                    if (masterSettings.IsLoggerEnabled)
-                    {
-                        var hexStartAddress = slave.StartAddress;
-
-                        var inputsCopy = new bool[inputs.Length];
-                        Array.Copy(inputs, inputsCopy, inputs.Length);
-
-                        while (inputsCopy.Length > 0)
-                        {
-                            var hexPart = inputsCopy.Take(16).ToArray();
-                            
-                            inputsCopy = inputsCopy.Skip(16).ToArray();
-                            
-                            results.Add(hexStartAddress, hexPart.ConvertToHex());
-                            
-                            hexStartAddress += 1;
-
-                            break;
-                        }
-                        var hex = Converter.ConvertToHex(inputs);
-                        
-                        // Добавляем полученное число в список значений.
-                        results.Add(slave.StartAddress, $"0x{hex}");
-                    }
 
                     foreach (var type in slave.Types)
                     {
@@ -301,9 +280,7 @@ namespace Core.Services
                     
                     if (masterSettings.IsLoggerEnabled)
                     {
-                        var hexResultsString = string.Join(";\r\n", hexResults.Select(x => $"{x.Key}: {x.Value}"));
-
-                        Logger.WriteDebug($"Recieved data from slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters};\r\n{hexResultsString}");
+                        Logger.WriteDebug($"Recieved data from slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters};\r\n{hexResults}");
                     }
                 }
                 catch (SlaveException slaveException)
@@ -318,6 +295,7 @@ namespace Core.Services
                             isConnectionLost = true;
                             break;
                         default:
+                            Logger.Write(slaveException.Message);
                             break;
                     }
                 }

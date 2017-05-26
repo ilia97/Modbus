@@ -69,7 +69,7 @@ namespace Core.DataAccess
             }
 
             int statFlushPeriod;
-            var statFlushPeriodString = fileLines[1].Split('=')[1].Trim().ToLower();
+            var statFlushPeriodString = fileLines[2].Split('=')[1].Trim().ToLower();
             if (!int.TryParse(statFlushPeriodString, out statFlushPeriod))
             {
                 statFlushPeriod = 0;

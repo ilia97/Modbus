@@ -1,0 +1,1750 @@
+00:01:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:01:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:01:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:01:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:02:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:02:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:03:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:03:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:03:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:03:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:06:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:06:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:06:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:07:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:07:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:08:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:08:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:09:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:09:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:10:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:10:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:11:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:11:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:12:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:12:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:13:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:13:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:21
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:26
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:26
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:31
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:31
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:36
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:36
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:41
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:41
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:46
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:46
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:51
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:51
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:14:56
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:14:56
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:15:01
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:15:01
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:15:06
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:15:06
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:15:11
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:15:11
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:15:16
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+
+00:15:16
+Recieved data from slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2;
+0x9A-00-6A-12
+
+
+00:15:21
+Sent request to a slave:
+DeviceId = 10;
+SlaveAddress=3010;
+NumberOfRegisters=2.
+
+

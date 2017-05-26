@@ -57,7 +57,8 @@ namespace ConsoleApp
                         if (masterSettings.StatFlushPeriod > 0)
                         {
                             var packagesLogTimer = new Timer(masterSettings.StatFlushPeriod * 1000 * 60);
-                            packagesLogTimer.Elapsed += (sender, e) => Logger.Write($"Sent={PackagesCounter.RequestedPackagesCount}; Rec={PackagesCounter.RecievedPackagesCount}: RecNOK={PackagesCounter.LostPackagesCount}");
+                            packagesLogTimer.Elapsed += (sender, e) => Logger.Write($"Sent={PackagesCounter.RequestedPackagesCount}; Rec={PackagesCounter.RecievedPackagesCount}; RecNOK={PackagesCounter.LostPackagesCount}");
+
                             packagesLogTimer.Start();
                         }
 

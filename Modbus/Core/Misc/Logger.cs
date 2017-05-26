@@ -20,9 +20,16 @@ namespace Core.Misc
 
         public static void Write(string error)
         {
-            // Берём имя файла логирования из настроек приложения.
-            
-            File.AppendAllText(logFileName, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
+            if (!Directory.Exists(dataFolderName))
+            {
+                // Если такой директории не существует, создаём её.
+                Directory.CreateDirectory(dataFolderName);
+            }
+
+            // Генерируем пусть к файлу исходя из его имени и имени подкаталога.
+            var filePath = Path.Combine(dataFolderName, logFileName);
+
+            File.AppendAllText(filePath, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
 
             // Если у нас запущено консольное приложение, то ошибку надо выводить и в консоль.
             if (WriteLogsToConsole)

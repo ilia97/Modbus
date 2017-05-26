@@ -1,0 +1,174 @@
+2017:05:26 23:34:12
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:26 23:34:13
+Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:502
+
+
+2017:05:26 23:38:05
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:26 23:39:10
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:26 23:39:45
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:26 23:40:52
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:26 23:41:57
+Sent=13; Rec=13: RecNOK=0
+
+
+2017:05:27 00:01:51
+Console Application 3MBP v1.0.0.3 starting poll
+
+
+2017:05:27 00:02:51
+Sent=12; Rec=12; RecNOK=0
+
+
+2017:05:27 00:03:17
+Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:502
+
+
+2017:05:27 00:03:52
+Sent=15; Rec=15; RecNOK=0
+
+
+2017:05:27 00:04:52
+Sent=15; Rec=15; RecNOK=0
+
+
+2017:05:27 00:05:52
+Sent=15; Rec=15; RecNOK=0
+
+
+2017:05:27 00:06:21
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:26
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:31
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:36
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:41
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:46
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:51
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:06:52
+Sent=23; Rec=16; RecNOK=0
+
+
+2017:05:27 00:06:56
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:07:01
+Выдано исключение типа "Modbus.SlaveException".
+Function Code: 131
+Exception Code: 1 - The function code received in the query is not an allowable action for the server (or slave). This may be because the function code is only applicable to newer devices, and was not implemented in the unit selected. It could also indicate that the server (or slave) is in the wrong state to process a request of this type, for example because it is unconfigured and is being asked to return register values.
+
+
+2017:05:27 00:07:52
+Sent=35; Rec=26; RecNOK=0
+
+
+2017:05:27 00:08:52
+Sent=47; Rec=38; RecNOK=0
+
+
+2017:05:27 00:09:52
+Sent=59; Rec=50; RecNOK=0
+
+
+2017:05:27 00:10:52
+Sent=71; Rec=62; RecNOK=0
+
+
+2017:05:27 00:11:52
+Sent=83; Rec=74; RecNOK=0
+
+
+2017:05:27 00:12:52
+Sent=95; Rec=86; RecNOK=0
+
+
+2017:05:27 00:13:32
+Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:502
+
+
+2017:05:27 00:13:52
+Sent=104; Rec=95; RecNOK=0
+
+
+2017:05:27 00:14:52
+Sent=116; Rec=107; RecNOK=0
+
+
+2017:05:27 00:15:21
+Операция не разрешается на неподключенных сокетах.
+
+
+2017:05:27 00:15:27
+Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение 127.0.0.1:502
+
+
+2017:05:27 00:15:52
+Sent=122; Rec=112; RecNOK=0
+
+
+2017:05:27 00:16:52
+Sent=122; Rec=112; RecNOK=0
+
+
+2017:05:27 00:17:52
+Sent=122; Rec=112; RecNOK=0
+
+
+2017:05:27 00:18:52
+Sent=122; Rec=112; RecNOK=0
+
+
+2017:05:27 00:19:52
+Sent=122; Rec=112; RecNOK=0
+
+

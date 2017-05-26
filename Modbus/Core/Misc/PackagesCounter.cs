@@ -16,7 +16,7 @@ namespace Core.Misc
         {
             get
             {
-                return RecievedPackagesCount - RecievedPackagesCount;
+                return RequestedPackagesCount - RecievedPackagesCount;
             }
         }
     }
