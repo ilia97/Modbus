@@ -1,0 +1,13 @@
+﻿Installing assembly 'D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.InstallLog
+   assemblypath = D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe
+Installing service 3MBP...
+Service 3MBP has been successfully installed.
+Creating EventLog source 3MBP in log Application...
+Committing assembly 'D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.InstallLog
+   assemblypath = D:\Projects\Modbus\Modbus\ServiceApp\bin\Debug\3MBP.exe
