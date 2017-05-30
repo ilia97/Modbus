@@ -104,7 +104,7 @@ namespace Core.Services
                 {
                     if (masterSettings.IsLoggerEnabled)
                     {
-                        Logger.WriteDebug($"Sent request to a slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters}.");
+                        Logger.WriteDebug($"Sent request to a slave: DeviceId = {masterSettings.DeviceId}; SlaveAddress={slave.StartAddress}; NumberOfRegisters={slave.NumberOfRegisters}.");
                     }
 
                     var registers = master.ReadHoldingRegisters(masterSettings.DeviceId, slave.StartAddress,
@@ -280,7 +280,7 @@ namespace Core.Services
                     
                     if (masterSettings.IsLoggerEnabled)
                     {
-                        Logger.WriteDebug($"Recieved data from slave:\r\nDeviceId = {masterSettings.DeviceId};\r\nSlaveAddress={slave.StartAddress};\r\nNumberOfRegisters={slave.NumberOfRegisters};\r\n{hexResults}");
+                        Logger.WriteDebug($"Recieved data from slave: DeviceId = {masterSettings.DeviceId}; SlaveAddress={slave.StartAddress}; NumberOfRegisters={slave.NumberOfRegisters}; {hexResults}");
                     }
                 }
                 catch (SlaveException slaveException)

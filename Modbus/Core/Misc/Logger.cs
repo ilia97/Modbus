@@ -29,7 +29,7 @@ namespace Core.Misc
             // Генерируем пусть к файлу исходя из его имени и имени подкаталога.
             var filePath = Path.Combine(dataFolderName, logFileName);
 
-            File.AppendAllText(filePath, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss}\r\n{error}\r\n\r\n\r\n");
+            File.AppendAllText(filePath, $"{DateTime.Now:yyyy:MM:dd HH:mm:ss} {error}\r\n");
 
             // Если у нас запущено консольное приложение, то ошибку надо выводить и в консоль.
             if (WriteLogsToConsole)
@@ -55,7 +55,7 @@ namespace Core.Misc
             var filePath = Path.Combine(dataFolderName, fileName);
 
             // Добавляем строку, содержащую текущее время суток и значение для каждого из ведомых устройств.
-            File.AppendAllText(filePath, $"{DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc):HH:mm:ss}\r\n{text}\r\n\r\n\r\n");
+            File.AppendAllText(filePath, $"{DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Utc):HH:mm:ss} {text}\r\n");
         }
     }
 }
